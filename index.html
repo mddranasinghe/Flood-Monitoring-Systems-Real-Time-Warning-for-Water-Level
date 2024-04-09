@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     .gui{width: 100%;height: 500px;  background-image: url('3.jpg');background-size: cover;}
+    
+ @keyframes grow {
+  from {
+    height: 0%
+  }
+  to {
+    height: 100%;
+  }
+}
+html, body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: #26323D;
+  background-image: radial-gradient(transparent 65%, rgba(black, 0.3));
+  font-family: sans-serif;
+}
+#container {
+  position: relative;
+  width: 10vw;
+  top: 20%;
+/*  left: 50%;
+  transform: translate3d(-50%, -50%, 0);*/
+  margin: 0 auto;
+}
+input {
+  display: none;
+}
+label {
+  position: relative;
+  display: block;
+  width: 10vw;
+  height:300px;
+  background: transparent;
+  border-radius: 0.4rem;
+  border: 2px solid white;
+  overflow: hidden;
+  box-shadow: -2px 0 8px 0 rgba(white, 0.6);
+
+  div {
+    position: absolute;
+    bottom:0;
+    left: 0;
+    background: linear-gradient(to bottom, #A3E2EF 35%, #4F9CC0);
+    height:100%;
+    width: 100%;
+    animation: grow 2s forwards;
+    box-shadow: 0 0 8px 1px white inset;
+    bottom: 0 auto;
+
+    &:before {
+      content: '';
+      display: block;
+      width: 100%;
+      height:50% ;
+      position: absolute;
+      bottom:0;
+      left: 0;
+      background: url(bubbles-mask.gif);
+      mix-blend-mode: overlay;
+      opacity: 2;
+    }
+  }
+}
+
+
+    </style>
+
+
+
+
+</head>
+<body>
+    <div class="gui">
+
+        <div id="container">
+            <input type="checkbox" id="water"/>
+            <label for="water">
+              <div id="fill"></div>
+            </label>
+          <!--  <span>Progress</span>
+            <span id="progress">0%</span>-->
+          </div>
+
+    </div>
+
+    <script>
+
+window.onload = function(){
+  var elm = document.querySelector('#progress');
+  setInterval(function(){
+    if(!elm.innerHTML.match(/100%/gi)){
+      elm.innerHTML = (parseInt(elm.innerHTML) + 1) + '%';
+    } else {
+      clearInterval();
+    }
+  }, 18)
+}
+    </script>
+</body>
+
+</html>
