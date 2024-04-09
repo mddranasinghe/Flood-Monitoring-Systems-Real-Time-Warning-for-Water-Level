@@ -22,7 +22,7 @@ html, body {
 }
 
 body {
-  background:white;
+  background:white; font-family: 'Avenir';
 
   font-family: sans-serif;
 }
@@ -74,24 +74,26 @@ div {
   }
 }
 
-span {
-    position: absolute;
-    color: #0a7eb4;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-top: 0.7rem;
-    margin-left:-120px;
-    top: 45%;
+.level {
+  position: absolute;
+  color: #0a7eb4;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 0.7rem;
+  margin-left: -110px;
+  top: 90%;
+}
 
-    &:last-child {
-      margin-left: -120px;
-      top:-2%;
-   
-    
-    }
-  }
+.level:nth-of-type(2) {
+  margin-left: -120px;
+  top: 45%;
+}
 
+.level:nth-of-type(3) {
+  margin-left: -120px;
+  top: -2%;
+}
 
 
 .toggle { position: relative; box-sizing: border-box;}
@@ -140,7 +142,7 @@ span {
 
 
 
-.mainpump { width:100%;box-shadow: 0.5px 0.5px 3px 0.5px gray; border-radius: 3px 3px;}
+.Ac,.Al { width:100%;box-shadow: 0.5px 0.5px 3px 0.5px gray; border-radius: 3px 3px;}
 .status_box {
         padding-left: 20px;
         padding-right: 20px;
@@ -177,16 +179,17 @@ span {
               <div id="fill"></div>
             </label>
        
-            <span>Warning Level</span>
-            <span>Critical Level</span>
+            <span class="level">Safety Level</span>
+            <span class="level">Warning Level</span>
+            <span class="level">Critical Level</span>
            
         <!-- <span id="progress">0%</span>-->
           </div>
 
     </div>
-       
-
-              <div class="mainpump">
+      <div style="width: 95%; margin: 0 auto;">
+    <p style="color:grey; margin-bottom: 3px; margin-top: 30px;"><b>Action</b></p>
+              <div class="Ac">
            
                      <div class="status_box">
                         <div class="topic"><p>Critical Level  Action</p></div>
@@ -201,6 +204,9 @@ span {
                      </div>
                     </div>
 
+                </div>
+                <p style="color:grey; margin-bottom: 3px; margin-top: 30px;"><b>Alert</b></p>
+                    <div class="Al">
                     <div class="status_box">
                         <div class="topic"><p>Critical Level Alert</p></div>
                         <div class="option">  <div class="toggle">
@@ -217,7 +223,7 @@ span {
           
 
     </div>
-  
+</div> 
 
     <script>
 
