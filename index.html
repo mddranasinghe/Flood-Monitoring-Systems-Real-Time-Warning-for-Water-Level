@@ -170,11 +170,37 @@ div {
 
 
 
+.popup {
+  width: 50%;
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius:20px;
+ 
+    z-index: 9999;
+}
 
+.popup-content {
+    text-align: center;
+}
 
+/* Styles for Yes and No buttons */
+#yesButton, #noButton {
+    padding: 10px 21.25%;
+   border: .5px solid  gray;
+    float: right;
+    margin: 0 auto;
+    border-bottom: none;
+    border-right: none;
+    color:blue
+  }
+#yesButton{border-left: none; color:red}
 
-
-    </style>
+</style>
 
 
 
@@ -236,23 +262,41 @@ div {
                         <input type="checkbox" id="w_al" ><label for="w_al" id=""></label></div> 
                      </div>
                     </div>
+
+                    
           
 
     </div>
 </div> 
+<div id="popup" class="popup">
+  <div style="padding: 20px;">   <div class="popup-content">
+    <p>Are you sure you want to perform this action?</p>  </div></div>
+
+    <div id="noButton">No</div>
+      <div id="yesButton">Yes</div>
+ 
+
+</div>
+
 
     <script>
-
-window.onload = function(){
-  var elm = document.querySelector('#progress');
-  setInterval(function(){
-    if(!elm.innerHTML.match(/100%/gi)){
-      elm.innerHTML = (parseInt(elm.innerHTML) + 1) + '%';
-    } else {
-      clearInterval();
+document.getElementById('c_ac').addEventListener('change', function() {
+    if (!this.checked) {
+        document.getElementById('popup').style.display = 'block';
     }
-  }, 18)
-}
+});
+
+document.getElementById('yesButton').addEventListener('click', function() {
+    document.getElementById('popup').style.display = 'none';
+    document.getElementById('c_ac').checked = false;
+});
+
+document.getElementById('noButton').addEventListener('click', function() {
+    document.getElementById('popup').style.display = 'none';
+	 document.getElementById('c_ac').checked = true;
+});
+
+
     </script>
 </body>
 
