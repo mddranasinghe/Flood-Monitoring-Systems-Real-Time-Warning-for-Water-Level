@@ -44,9 +44,14 @@ input {
   height :300px;
   background: transparent;
   border-radius: 0.4rem;
-  border: 2px solid white;
+  border: 4px solid white;
   overflow: hidden;
-  box-shadow: -2px 0 8px 0 rgba(white, 0.6);
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  box-shadow: -2px 4px 8px 4px rgba(white, 0.6);
+  border-image: linear-gradient(to top, green 20%, orange 70%, red 100%) 1; /* Set border image with linear gradient */
+
 
 div {
     position: absolute;
@@ -67,34 +72,44 @@ div {
       position: absolute;
       bottom:0;
       left: 0;
-      background: url(bubbles-mask.gif);
+     /* background: url(bubbles-mask.gif);*/
+     background-color: blue;
       mix-blend-mode: overlay;
       opacity: 2;
     }
+
+
   }
 }
 
 .level {
   position: absolute;
-  color: #0a7eb4;
+
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   margin-top: 0.7rem;
-  margin-left: -110px;
+  margin-left: -85px;
   top: 90%;
+  color:green
 }
 
 .level:nth-of-type(2) {
   margin-left: -120px;
   top: 45%;
+  color:#929500
 }
 
 .level:nth-of-type(3) {
   margin-left: -120px;
-  top: -2%;
+  top: 20%;
+  color: #FF9200
 }
-
+.level:nth-of-type(4) {
+  margin-left: -90px;
+  top: -4%;
+  color: red;
+}
 
 .toggle { position: relative; box-sizing: border-box;}
 .toggle input[type="checkbox"] {
@@ -179,9 +194,10 @@ div {
               <div id="fill"></div>
             </label>
        
-            <span class="level">Safety Level</span>
+            <span class="level">Low Level</span>
             <span class="level">Warning Level</span>
             <span class="level">Critical Level</span>
+            <span class="level">high Level</span>
            
         <!-- <span id="progress">0%</span>-->
           </div>
