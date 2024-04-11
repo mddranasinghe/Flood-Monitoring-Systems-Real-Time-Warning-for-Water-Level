@@ -187,16 +187,17 @@ div {
 .popup-content {
     text-align: center;
 }
+.pop_button{width: 100%; border-top:solid; border-width: 1px; border-color:gray ;}
 
-/* Styles for Yes and No buttons */
 #yesButton, #noButton {
-    padding: 10px 21.25%;
-   border: .5px solid  gray;
+width: 49%;
+height: 35px;
+text-align: center;
+   border: 1px solid  gray;
     float: right;
-    margin: 0 auto;
     border-bottom: none;
     border-right: none;
-    color:blue
+    color:blue;
   }
 #yesButton{border-left: none; color:red}
 
@@ -271,9 +272,9 @@ div {
 <div id="popup" class="popup">
   <div style="padding: 20px;">   <div class="popup-content">
     <p>Are you sure you want to perform this action?</p>  </div></div>
-
+<div class="pop_button">
     <div id="noButton">No</div>
-      <div id="yesButton">Yes</div>
+      <div id="yesButton">Yes</div></div>
  
 
 </div>
