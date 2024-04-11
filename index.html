@@ -172,7 +172,7 @@ div {
 
 .popup {
   width: 70%;
-    display: block;
+    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -187,7 +187,7 @@ div {
 .popup-content {
     text-align: center;
 }
-.pop_button{width: 100%; border-top:solid; border-width: 1px; border-color:gray; position:relative;}
+.pop_button{width: 100%; border-top:solid; border-width: .5px; border-color:gray; position:relative;}
 
 #yesButton, #noButton {
 width: 49%;  
@@ -236,13 +236,13 @@ height: 46px;
                      <div class="status_box">
                         <div class="topic"><p>Critical Level  Action</p></div>
                         <div class="option">  <div class="toggle">
-                        <input type="checkbox" id="c_ac" ><label for="c_ac" id=""></label></div> 
+                        <input type="checkbox" id="c_ac" onclick="actionClose('c_ac')" ><label for="c_ac" id=""></label></div> 
                      </div>
                     </div>
                     <div class="status_box">
                         <div class="topic"><p>Warning Level  Action</p></div>
                         <div class="option">  <div class="toggle">
-                        <input type="checkbox" id="w_aC" ><label for="w_aC" id=""></label></div> 
+                        <input type="checkbox" id="w_ac" onclick="actionClose('w_ac')" ><label for="w_ac" id=""></label></div> 
                      </div>
                     </div>
 
@@ -252,14 +252,14 @@ height: 46px;
                     <div class="status_box">
                         <div class="topic"><p>Critical Level Alert</p></div>
                         <div class="option">  <div class="toggle">
-                        <input type="checkbox" id="c_al" ><label for="c_al" id=""></label></div> 
+                        <input type="checkbox" id="c_al" onclick="actionClose('c_al')"><label for="c_al" id=""></label></div> 
                      </div>
                     </div>
 
                     <div class="status_box">
                         <div class="topic"><p>Warning Level Alert</p></div>
                         <div class="option">  <div class="toggle">
-                        <input type="checkbox" id="w_al" ><label for="w_al" id=""></label></div> 
+                        <input type="checkbox" id="w_al" onclick="actionClose('w_al')" ><label for="w_al" id=""></label></div> 
                      </div>
                     </div>
 
@@ -277,10 +277,10 @@ height: 46px;
  
 
 </div>
+<script>
 
-
-    <script>
-document.getElementById('c_ac').addEventListener('change', function() {
+  function actionClose(id){
+document.getElementById(id).addEventListener('change', function() {
     if (!this.checked) {
         document.getElementById('popup').style.display = 'block';
     }
@@ -288,15 +288,15 @@ document.getElementById('c_ac').addEventListener('change', function() {
 
 document.getElementById('yesButton').addEventListener('click', function() {
     document.getElementById('popup').style.display = 'none';
-    document.getElementById('c_ac').checked = false;
+    document.getElementById(id).checked = false;
 });
 
 document.getElementById('noButton').addEventListener('click', function() {
     document.getElementById('popup').style.display = 'none';
-	 document.getElementById('c_ac').checked = true;
+	 document.getElementById(id).checked = true;
 });
 
-
+  }
     </script>
 </body>
 
