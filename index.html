@@ -236,13 +236,13 @@ height: 46px;
                      <div class="status_box">
                         <div class="topic"><p>Critical Level  Action</p></div>
                         <div class="option">  <div class="toggle">
-                        <input type="checkbox" id="c_ac" onclick="actionClose('c_ac')" ><label for="c_ac" id=""></label></div> 
+                        <input type="checkbox" id="c_ac" onclick="actionClose('c_ac')" ><label for="c_ac" ></label></div> 
                      </div>
                     </div>
                     <div class="status_box">
                         <div class="topic"><p>Warning Level  Action</p></div>
                         <div class="option">  <div class="toggle">
-                        <input type="checkbox" id="w_ac" onclick="actionClose('w_ac')" ><label for="w_ac" id=""></label></div> 
+                        <input type="checkbox" id="w_ac" onclick="actionClose('w_ac')" ><label for="w_ac" ></label></div> 
                      </div>
                     </div>
 
@@ -252,14 +252,14 @@ height: 46px;
                     <div class="status_box">
                         <div class="topic"><p>Critical Level Alert</p></div>
                         <div class="option">  <div class="toggle">
-                        <input type="checkbox" id="c_al" onclick="actionClose('c_al')"><label for="c_al" id=""></label></div> 
+                        <input type="checkbox" id="c_al" onclick="actionClose('c_al')"><label for="c_al" ></label></div> 
                      </div>
                     </div>
 
                     <div class="status_box">
                         <div class="topic"><p>Warning Level Alert</p></div>
                         <div class="option">  <div class="toggle">
-                        <input type="checkbox" id="w_al" onclick="actionClose('w_al')" ><label for="w_al" id=""></label></div> 
+                        <input type="checkbox" id="w_al" onclick="actionClose('w_al')" ><label for="w_al" ></label></div> 
                      </div>
                     </div>
 
@@ -278,25 +278,35 @@ height: 46px;
 
 </div>
 <script>
-
-  function actionClose(id){
-document.getElementById(id).addEventListener('change', function() {
+var id1;
+  function actionClose(id1){
+document.getElementById(id1).addEventListener('change', function() {
     if (!this.checked) {
         document.getElementById('popup').style.display = 'block';
     }
 });
 
 document.getElementById('yesButton').addEventListener('click', function() {
+ 
+    var id1Value = id1;
     document.getElementById('popup').style.display = 'none';
-    document.getElementById(id).checked = false;
+    if (id1Value) {
+        document.getElementById(id1Value).checked = false;
+    }
+    id1 = '';
 });
+
 
 document.getElementById('noButton').addEventListener('click', function() {
+    var id1Value = id1;
     document.getElementById('popup').style.display = 'none';
-	 document.getElementById(id).checked = true;
+    if (id1Value) {
+        document.getElementById(id1Value).checked = true;
+    }
+    id1 = '';
 });
-
-  }
+}
+  
     </script>
 </body>
 
