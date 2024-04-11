@@ -191,12 +191,12 @@ div {
 
 #yesButton, #noButton {
 width: 49%;  
-height: 46px;
+height: 47px;
  border-left: solid;
  border-color: gray;
  border-width: 0.5px;
-    float: right;
-    color:blue;
+float: right;
+color:blue;
   }
 #yesButton{border-left: none; color:red}
 .pop_button p{ text-align:center; margin-bottom: 10px;}
@@ -211,7 +211,7 @@ height: 46px;
   right: 0;
   bottom: 0;
   background-color: rgba(0,0,0,0.5);
-  z-index: 2;
+  z-index: 9998;
   cursor: pointer;
 }
 
@@ -301,46 +301,46 @@ height: 46px;
 
 </div>
 
-<div id="overlay" onclick="off()">
+<div id="overlay">
 
 
   </div>
 </div>
 <script>
 
+var id1Value,id1;
 
-
-var id1;
   function actionClose(id1){
-document.getElementById(id1).addEventListener('change', function() {
-    if (!this.checked) {
+    var checkbox = document.getElementById(id1)
+    if (!checkbox.checked) {
         document.getElementById('popup').style.display = 'block';
         document.getElementById("overlay").style.display = "block";
     }
-});
+    id1Value=id1;
+  }
+
 
 document.getElementById('yesButton').addEventListener('click', function() {
  
-    var id1Value = id1;
     document.getElementById('popup').style.display = 'none';
     document.getElementById("overlay").style.display = "none";
     if (id1Value) {
         document.getElementById(id1Value).checked = false;
     }
-    id1 = '';
+   
 });
 
 
 document.getElementById('noButton').addEventListener('click', function() {
-    var id1Value = id1;
+
     document.getElementById('popup').style.display = 'none';
     document.getElementById("overlay").style.display = "none";
     if (id1Value) {
         document.getElementById(id1Value).checked = true;
     }
-    id1 = '';
+  
 });
-}
+
   
     </script>
 </body>
