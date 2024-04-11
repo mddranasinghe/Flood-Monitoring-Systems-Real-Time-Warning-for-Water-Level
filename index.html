@@ -187,12 +187,11 @@ div {
 .popup-content {
     text-align: center;
 }
-.pop_button{width: 100%; border-top:solid; border-width: 1px; border-color:gray ;}
+.pop_button{width: 100%; border-top:solid; border-width: 1px; border-color:gray; position:relative;}
 
 #yesButton, #noButton {
 width: 49%;  
-height: 35px;
-text-align: center;
+height: 46px;
  border-left: solid;
  border-color: gray;
  border-width: 0.5px;
@@ -200,7 +199,7 @@ text-align: center;
     color:blue;
   }
 #yesButton{border-left: none; color:red}
-
+.pop_button p{ text-align:center; margin-bottom: 10px;}
 </style>
 
 
@@ -273,8 +272,8 @@ text-align: center;
   <div style="padding: 20px;">   <div class="popup-content">
     <p>Are you sure you want to perform this action?</p>  </div></div>
 <div class="pop_button">
-    <div id="noButton">No</div>
-      <div id="yesButton">Yes</div></div>
+    <div id="noButton"><p>No</p></div>
+      <div id="yesButton"><p>Yes</p></div></div>
  
 
 </div>
