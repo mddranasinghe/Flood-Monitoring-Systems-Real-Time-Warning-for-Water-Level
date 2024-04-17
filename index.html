@@ -97,18 +97,18 @@ div {
 .level:nth-of-type(2) {
   margin-left: -115px;
   top: 45%;
-  color:#929500
+  color: #FF9200
 }
 
 .level:nth-of-type(3) {
   margin-left: -115px;
   top: 20%;
-  color: #FF9200
+  color:  #FF3827
 }
 .level:nth-of-type(4) {
   margin-left: -85px;
   top: -4%;
-  color: red;
+  color: rgb(180, 4, 4);
 }
 
 .toggle { position: relative; box-sizing: border-box;}
@@ -165,7 +165,7 @@ div {
         display: flex; /* Use flexbox to align children */
          align-items: center; }
 
-.topic {flex: 1;} /* Expand to fill remaining space */
+.topic {flex: 1;} 
 .option { margin-left: center;} /* Push to the right */
 
 
@@ -214,13 +214,7 @@ color:blue;
   z-index: 9998;
   cursor: pointer;
 }
-
-
-
-
 </style>
-
-
 
 
 </head>
@@ -248,13 +242,32 @@ color:blue;
 
     </div>
       <div style="width: 95%; margin: 0 auto;">
-    <p style="color:grey; margin-bottom: 3px; margin-top: 30px;"><b>Action</b></p>
-              <div class="Ac">
+    <p style="color:grey; margin-bottom: 3px; margin-top: 30px;"><b>Alert</b></p>
+    
+    <div class="Al">
+    <div class="status_box">
+        <div class="topic"><p>Critical Level Alert</p></div>
+        <div class="option">  <div class="toggle">
+        <input type="checkbox" id="c_al" onclick="actionClose('c_al')" ><label for="c_al" ></label></div> 
+     </div>
+    </div>
+
+    <div class="status_box">
+        <div class="topic"><p>Warning Level Alert</p></div>
+        <div class="option">  <div class="toggle">
+        <input type="checkbox" id="w_al" onclick="actionClose('w_al')" ><label for="w_al" ></label></div> 
+     </div>
+    </div>
+</div>
+    
+<p style="color:grey; margin-bottom: 3px; margin-top: 30px;"><b>Action</b></p>
+
+                 <div class="Ac">
            
                      <div class="status_box">
                         <div class="topic"><p>Critical Level  Action</p></div>
                         <div class="option">  <div class="toggle">
-                        <input type="checkbox" id="c_ac" onclick="actionClose('c_ac')" ><label for="c_ac" ></label></div> 
+                        <input type="checkbox" id="c_ac" onclick="actionClose('c_ac')" checked><label for="c_ac" ></label></div> 
                      </div>
                     </div>
                     <div class="status_box">
@@ -265,71 +278,62 @@ color:blue;
                     </div>
 
                 </div>
-                <p style="color:grey; margin-bottom: 3px; margin-top: 30px;"><b>Alert</b></p>
-                    <div class="Al">
-                    <div class="status_box">
-                        <div class="topic"><p>Critical Level Alert</p></div>
-                        <div class="option">  <div class="toggle">
-                        <input type="checkbox" id="c_al" onclick="actionClose('c_al')"><label for="c_al" ></label></div> 
-                     </div>
-                    </div>
-
-                    <div class="status_box">
-                        <div class="topic"><p>Warning Level Alert</p></div>
-                        <div class="option">  <div class="toggle">
-                        <input type="checkbox" id="w_al" onclick="actionClose('w_al')" ><label for="w_al" ></label></div> 
-                     </div>
-                    </div>
-
-                    
-          
-
-    </div>
+               
 </div> 
 <div id="popup" class="popup">
   <div style="padding: 20px;">   <div class="popup-content">
     <p>Are you sure you want to perform this action?</p>  </div></div>
-
-
 <div class="pop_button">
     <div id="noButton"><p>No</p></div>
       <div id="yesButton"><p>Yes</p></div></div>
- 
-
-
-      
-
 </div>
+<div id="overlay"></div>
 
-<div id="overlay">
-
-
-  </div>
-</div>
 <script>
 
-var id1Value,id1;
+var id1Value,id1,
+payload, companyID="node", deviceType="wlc",deviceID="8469308fcf871dad4d4" ;
+var publish_topic=companyID+"/"+deviceType+"/"+"b2n/"+deviceID+"/";// publish topic
+var subTopic = companyID+"/"+deviceType+"/"+"n2b/"+deviceID+"/+";// subscribe topic
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var payload
   function actionClose(id1){
     var checkbox = document.getElementById(id1)
     if (!checkbox.checked) {
         document.getElementById('popup').style.display = 'block';
         document.getElementById("overlay").style.display = "block";
+        
+    }
+    else{
+      payload="1";
     }
     id1Value=id1;
+    console.log(payload);
   }
-
-
 document.getElementById('yesButton').addEventListener('click', function() {
  
     document.getElementById('popup').style.display = 'none';
     document.getElementById("overlay").style.display = "none";
     if (id1Value) {
         document.getElementById(id1Value).checked = false;
+        payload="0";
     }
-   
+    console.log(payload);
 });
-
 
 document.getElementById('noButton').addEventListener('click', function() {
 
@@ -337,11 +341,13 @@ document.getElementById('noButton').addEventListener('click', function() {
     document.getElementById("overlay").style.display = "none";
     if (id1Value) {
         document.getElementById(id1Value).checked = true;
+        payload="1";
     }
-  
+    console.log(payload);
 });
 
-  
+
+
     </script>
 </body>
 
