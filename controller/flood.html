@@ -9,27 +9,18 @@
     <script src="../resources/js/connection.js"></script>
     <style >
 
-.gui{width: 100%;height: 500px;  background-image: url('../resources/image/.jpeg');background-size: cover;}
+.gui{width: 100%;height: 500px;  background-image: url('../resources/image/.jpeg');background-size: cover; }
     
-    @keyframes grow {
-     from {
-       height: 0%
-     }
-     to {
-       height: 100%;
-     }
-    }
+  
     html, body {
      margin: 0;
      height: 100%;
      width: 100%;
-    }
     
-    body {
-     background:white; font-family: 'Avenir';
-    
-     font-family: sans-serif;
     }
+    body{  background:white; font-family: 'Avenir';
+    font-family: sans-serif;}
+
     #container {
      position: relative;
      width: 10vw;
@@ -37,6 +28,7 @@
     /*  left: 50%;
      transform: translate3d(-50%, -50%, 0);*/
      margin: 0 auto;
+
     }
     input {
      display: none;
@@ -65,21 +57,19 @@
       height: 100%;
       border: .2vw solid gray;
       border-radius: 1vw;
-      box-shadow: inset 0 0 0 .6vw white;
+      box-shadow: inset  0 0 0 .6vw white;
 
     }
     #fill{
       position: absolute;
       width: 100%;
-      height: 50%;
-margin-left: auto;
-
-margin-right: auto;
-
-z-index: -1;
+      height: 1%; /*should 98.5%*/
+      z-index: -1;
       background-color: #018FFB;
       bottom: .3%;
-     
+      border-radius:2vw;
+
+    
 
     }
     
@@ -103,12 +93,12 @@ z-index: -1;
      color: red
     }
     
-   /* .level:nth-of-type(3) {
-     margin-left: -115px;
-     top: %;
-     color:  #FF3827
+    .level:nth-of-type(3) {
+     margin-left: -87px;
+     top:92%;
+     color: green;
     }
-    .level:nth-of-type(4) {
+  /*  .level:nth-of-type(4) {
      margin-left: -85px;
      top: -4%;
      color: rgb(180, 4, 4);
@@ -230,18 +220,19 @@ z-index: -1;
   
 
         <div id="container">
-           <div  id="water_level">   <div  id="fill"></div></div>
+           <div  id="water_level">   <div id="fill"></div></div>
             <label for="water"> </label>
-            <!-- <span class="level">Low Level-</span>-->
+      
             <span class="level">Warning Level-</span>
             <span class="level">Critical Level-</span>
+            <span class="level">Safe Level-</span>
           <!-- <span class="level">high Level-</span>--> 
            
         <!-- <span id="progress">0%</span>-->
           </div>
 
     </div>
-      <div style="width: 95%; margin: 0 auto;">
+      <div style="width: 95%; margin: 0 auto; margin-top: -15%;">
     <p style="color:grey; margin-bottom: 3px; margin-top: 30px;"><b>Alert</b></p>
     
     <div class="Al">
