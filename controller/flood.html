@@ -9,9 +9,8 @@
     <script src="../resources/js/connection.js"></script>
     <style >
 
-.gui{width: 100%;height: 500px;  background-image: url('../resources/image/.jpeg');background-size: cover; }
-    
-  
+.gui{width: 100%;margin-top:10vw; background-image: url('../resources/image/.jpeg');background-size: cover; }
+      
     html, body {
      margin: 0;
      height: 100%;
@@ -54,7 +53,7 @@
     {
       left:5px;
       position: absolute;
-      width: 8vw;
+      width: 50px;
       height: 100%;
       border: .2vw solid gray;
       border-radius: 1vw;
@@ -64,11 +63,12 @@
     #fill{
       position: absolute;
       width: 100%;
-      height: 1.2%; /*should 98.5%*/
+      height: .5vw; /*should 98.5%*/
       z-index: -1;
       background-color: #018FFB;
       bottom: .3%;
       border-radius:2vw;
+     
 
     
 
@@ -120,7 +120,8 @@
      position: relative;
      display: block;
      align-items: center;
-     box-sizing: border-box;}
+     box-sizing: border-box;
+     }
     
     .toggle label:before {
      content: '';
@@ -132,6 +133,7 @@
      border-radius: 46px;
      box-sizing: border-box;
      transition: 0.2s ease-in;
+     
     }
     .toggle label:after {
      content: '';
@@ -208,18 +210,25 @@
      z-index: 9998;
      cursor: pointer;
     }
+
+
+    @media only screen and (min-width: 900px) {
+      #water_level{width:}
+      body{width: 80%; margin: 0 auto;}
+    }
+
     </style>
 
 
 </head>
 <body>
-    <div class="gui">
+  
     <table style="width: 100%;"><tr>
         <td><a href="../index.html"><img src="../resources\image\less-than.png" style="width: 30px; height: 35px;"></a></td>
         <td style="text-align: center; width:100%;"><h2 >Flood Monitoring Systems</h2></td>
       </tr></table>
   
-
+      <div class="gui">
         <div id="container">
            <div  id="water_level">   <div id="fill"></div></div>
             <label for="water"> </label>
@@ -232,8 +241,8 @@
         <!-- <span id="progress">0%</span>-->
           </div>
 
-    </div>
-      <div style="width: 95%; margin: 0 auto; margin-top: -35%;">
+        </div>
+      <div style="width: 95%; margin: 0 auto; ">
     <p style="color:grey; margin-bottom: 3px; margin-top: 30px;"><b>Alert</b></p>
     
     <div class="Al">
