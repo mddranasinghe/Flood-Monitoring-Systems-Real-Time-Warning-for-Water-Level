@@ -19,6 +19,7 @@
     body{  background:white; font-family: 'Avenir';
     font-family: sans-serif;}
     .gui{width: 92.5%;height: 320px; margin: 0 auto; border:px solid; position: relative;box-shadow: 0.5px 0.5px 3px 0.5px gray; border-radius: 1vw;}
+    
 
     #container {
      position: absolute;
@@ -58,7 +59,7 @@
       height: 100%;
       border: .2vw solid gray;
       border-radius: 1vw;
-      box-shadow: inset  0 0 0 .6vw white;
+      box-shadow: inset  0 0 0 .6vw  white;
 
     }
     #fill{
@@ -146,7 +147,7 @@
     
     .main_top{color:grey; margin-bottom: 3px; margin-top: 20px;margin-left:1.8vw;}
     
-    .Ac,.Al { width:97%;box-shadow: 0.5px 0.5px 3px 0.5px gray; border-radius: 3px 3px; margin: 0 auto;}
+    .Ac,.Al { width:97%;box-shadow: 0.5px 0.5px 3px 0.5px gray; border-radius:3px; margin: 0 auto;}
 
 
 
@@ -230,7 +231,7 @@
 
         <table style="width: 93%; margin: 0 auto;"><tr style="width: 90%;"><td  style="width: 50%;"><td style="width: 50%; text-align: right;">
         <p style="font-size: 13px; color:rgb(156, 156, 156) ; display: inline;" id="offline">offline</p> 
-        <p style="font-size: 13px; color:#7BDD0A; display: none;" id="online">online</p></td>
+        <p style="font-size: 13px; color:#7BDD0A; display: none;" id="online"> online </p></td>
         <td>
           <div class="signal-bars" id="signalBars">
             <div class="bar" id="bar1" style="height:2px; margin-top:8px;"></div>
@@ -241,6 +242,7 @@
         </div></td></tr></table>
   
       <div class="gui">
+        <div class="gui2">
         <div id="container">
            <div  id="water_level"><div id="fill"></div></div>
             <label for="water"></label>
@@ -253,6 +255,7 @@
         <!-- <span id="progress">0%</span>-->
           </div>
 
+        </div>
         </div>
       <div style="width: 95%; margin: 0 auto;">
     <p class="main_top" ><b>Alert</b></p>
@@ -349,7 +352,7 @@ function onMessageArrived(message) {
   payload=message.payloadString;
     console.log("Payload:" + payload);
     console.log("Topic:", topic);
-   // displayFunction(payload);  
+  // displayFunction(payload);  
   }
   catch(error)
   {
@@ -360,10 +363,60 @@ function onMessageArrived(message) {
 function onConnectionLost(responseObject) {
   if (responseObject.errorCode !== 0) {
     console.log("onConnectionLost:"+responseObject.errorMessage);
-    //offlinestatus('offline');
+    offlinestatus('offline');
   }
   
 }
+
+offlinestatus(stat)
+{
+  document.getElementById("online").style.display="none";
+  document.getElementById("offline").style.display="inline";
+  /*document.getElementById('c_al').disabled=true;
+  document.getElementById('w_al').disabled=true;
+  document.getElementById('c_ac').disabled=true;
+  document.getElementById('w_ac').disabled=true;*/
+
+
+
+}
+/*displayFunction()
+{
+
+}
+onlinestatus()
+{
+  document.getElementById("online").style.display="inline";
+  document.getElementById("offline").style.display="none";
+
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -402,6 +455,15 @@ document.getElementById('noButton').addEventListener('click', function() {
     }
     console.log(payload);
 });
+
+
+
+
+
+
+
+
+
 
 connect();
 
