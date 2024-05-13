@@ -147,7 +147,7 @@
     
     .main_top{color:grey; margin-bottom: 3px; margin-top: 20px;margin-left:1.8vw;}
     
-    .Ac,.Al { width:97%;box-shadow: 0.5px 0.5px 3px 0.5px gray; border-radius:3px; margin: 0 auto;}
+    .Ac,.Al { width:97%;box-shadow: 0.5px 0.5px 3px 0.5px gray; border-radius:3px; margin: 0 auto; position: relative;}
 
 
 
@@ -196,17 +196,17 @@
     .pop_button p{ text-align:center; margin-bottom: 10px;}
     
     #overlay {
-     position: fixed;
-     display: none;
+  /*   position: fixed;*/
+     display: non;
      width: 100%;
      height: 100%;
      top: 0;
      left: 0;
-     right: 0;
-     bottom: 0;
      background-color: rgba(0,0,0,0.5);
      z-index: 9998;
      cursor: pointer;
+     position: absolute;
+     border-radius:3px;
     }
     .signal-bars {display: flex; margin: 2px; }
  .bar {width: 3px;margin-right: 1px;background-color: #ccc;}
@@ -256,9 +256,11 @@
           </div>
 
         </div>
+        <div id="overlay"></div>
+
         </div>
       <div style="width: 95%; margin: 0 auto;">
-    <p class="main_top" ><b>Alert</b></p>
+    <p class="main_top"><b>Alert</b></p>
     
     <div class="Al">
     <div class="status_box">
@@ -274,6 +276,8 @@
         <input type="checkbox" id="w_al" onclick="actionClose('w_al')" checked><label for="w_al" ></label></div> 
      </div>
     </div>
+    <div id="overlay"></div>
+
 </div>
     
 <p  class="main_top"><b>Action</b></p>
@@ -292,7 +296,7 @@
                         <input type="checkbox" id="w_ac" onclick="actionClose('w_ac')" checked ><label for="w_ac" ></label></div> 
                      </div>
                     </div>
-
+                    <div id="overlay"></div>
                 </div>
                
 </div> 
@@ -305,15 +309,15 @@
     <div id="noButton"><p>No</p></div>
       <div id="yesButton"><p>Yes</p></div></div>
 </div>
-<div id="overlay"></div>
+
 
 <script>
 
-var id1Value,id1,payload;
-payload, companyID="node", deviceType="lls2",deviceID="923714-42180e2de6b4" ;
-var publish_topic=companyID+"/"+deviceType+"/"+"b2n/"+deviceID+"/";// publish topic
-var subTopic = companyID+"/"+deviceType+"/"+"n2b/"+deviceID+"/+";// subscribe topic
-
+var id1Value,id1,payload,topic,
+companyID="node", deviceType="lls2",deviceID="923714-42180e2de6b4",
+publish_topic=companyID+"/"+deviceType+"/"+"b2n/"+deviceID+"/",// publish topic
+subTopic = companyID+"/"+deviceType+"/"+"n2b/"+deviceID+"/+",// subscribe topic
+levels=document.getElementById('Fill');
 
 
 function connect(){
@@ -370,26 +374,107 @@ function onConnectionLost(responseObject) {
 
 offlinestatus(stat)
 {
+var stat=stat;
   document.getElementById("online").style.display="none";
   document.getElementById("offline").style.display="inline";
+
   /*document.getElementById('c_al').disabled=true;
   document.getElementById('w_al').disabled=true;
   document.getElementById('c_ac').disabled=true;
   document.getElementById('w_ac').disabled=true;*/
 
-
-
 }
-/*displayFunction()
+
+displayFunction(payload)
 {
+  payload = JSON.parse(payload);
+      stat=payload['stat'];
+
+      switch (stat)
+      {
+        case "online":
+          onlinestatus();
+          break;
+        case "offline":
+        offlinestatus(stat);
+          break;
+
+      }
+
+  if(stat == 'online')
+  {
+    if (payload.levels[0] == '0' &&  payload.levels[1] == '0' ) 
+    {
+      levels.style.height="1vw";
+      
+    }
+    if (payload.levels[0] == '0' &&  payload.levels[1] == '1' ) 
+    {
+      levels.style.height="50vw";
+      
+    }
+    if (payload.levels[0] == '1' &&  payload.levels[1] == '1' ) 
+    {
+      levels.style.height="98vw";
+
+    }
+  }
 
 }
-onlinestatus()
+  onlinestatus()
 {
   document.getElementById("online").style.display="inline";
   document.getElementById("offline").style.display="none";
 
-}*/
+}
+
+
+document.getElementById('c_al').addEventListener('change', function(){
+   topic=publish_topic+"sw/timer_mode_all";
+      
+      if (this.checked) {
+        payload="-,1";
+      }
+      else{
+        payload="-,0";
+      }
+      sendCommandToDevice(topic,payload);
+    });
+
+    document.getElementById('w_al').addEventListener('change', function(){
+   topic=publish_topic+"sw/timer_mode_all";
+      
+      if (this.checked) {
+        payload="-,1";
+      }
+      else{
+        payload="-,0";
+      }
+      sendCommandToDevice(topic,payload);
+    });
+
+    document.getElementById('c_ac').addEventListener('change', function(){
+   topic=publish_topic+"sw/timer_mode_all";
+      
+      if (this.checked) {
+        payload="-,1";
+      }
+      else{
+        payload="-,0";
+      }
+      sendCommandToDevice(topic,payload);
+    });
+    document.getElementById('w_ac').addEventListener('change', function(){
+   topic=publish_topic+"sw/timer_mode_all";
+      
+      if (this.checked) {
+        payload="-,1";
+      }
+      else{
+        payload="-,0";
+      }
+      sendCommandToDevice(topic,payload);
+    });
 
 
 
@@ -397,31 +482,7 @@ onlinestatus()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    ///////////////////////////////////////////////////////////////////////////
   function actionClose(id1){
     var checkbox = document.getElementById(id1)
     if (!checkbox.checked) {
