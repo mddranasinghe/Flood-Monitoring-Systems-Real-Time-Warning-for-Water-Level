@@ -195,7 +195,20 @@
     #yesButton{border-left: none; color:red}
     .pop_button p{ text-align:center; margin-bottom: 10px;}
     
-    #overlay,    #overlay1,    #overlay2,    #overlay3 {
+    #overlay {
+     position: fixed;
+     display: none;
+     width: 100%;
+     height: 100%;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background-color: rgba(0,0,0,0.5);
+     z-index: 9998;
+     cursor: pointer;
+    }
+#overlay_gui,#overlay_ac,#overlay_al{
   /*   position: fixed;*/
      display: none;
      width: 100%;
@@ -256,7 +269,7 @@
           </div>
 
         </div>
-        <div id="overlay"></div>
+        <div id="overlay_gui"></div>
 
         </div>
       <div style="width: 95%; margin: 0 auto;">
@@ -276,7 +289,7 @@
         <input type="checkbox" id="w_al" onclick="actionClose('w_al')" checked><label for="w_al" ></label></div> 
      </div>
     </div>
-    <div id="overlay3"></div>
+    <div id="overlay_al"></div>
 
 </div>
     
@@ -296,7 +309,7 @@
                         <input type="checkbox" id="w_ac" onclick="actionClose('w_ac')" checked ><label for="w_ac" ></label></div> 
                      </div>
                     </div>
-                    <div id="overlay2"></div>
+                    <div id="overlay_ac"></div>
                 </div>
                
 </div> 
@@ -309,7 +322,7 @@
     <div id="noButton"><p>No</p></div>
       <div id="yesButton"><p>Yes</p></div></div>
 </div>
-<div id="overlay1"></div>
+<div id="overlay"></div>
 
 <script>
 
@@ -378,7 +391,9 @@ function offlinestatus(stat)
   document.getElementById("online").style.display="none";
   document.getElementById("offline").style.display="inline";
 
-  document.getElementById("overlay").style.display="block";
+  document.getElementById("overlay_gui").style.display="block";
+  document.getElementById("overlay_ac").style.display="block";
+  document.getElementById("overlay_al").style.display="block";
 
 }
 
