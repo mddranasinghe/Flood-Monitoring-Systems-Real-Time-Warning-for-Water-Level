@@ -19,7 +19,7 @@
     }
     body{  background:white; font-family: 'Avenir';
     font-family: sans-serif;}
-    .gui{width: 92.5%;height: 320px; margin: 0 auto; border:px solid; position: relative;box-shadow: 0.5px 0.5px 3px 0.5px gray; border-radius: 1vw;}
+    .gui{width: 92.5%;height: 320px; margin: 0 auto; border:px solid; position: relative;box-shadow: 0.5px 0.5px 3px 0.5px gray; border-radius: 3px;}
     
 
     #container {
@@ -56,21 +56,21 @@
     {
       left:7px;
       position: absolute;
-      width: 45px;
+      width: 40px;
       height: 100%;
-      border: .2vw solid gray;
-      border-radius: 1vw;
-      box-shadow: inset  0 0 0 .6vw  white;
+      border: 2px solid gray;
+      border-radius: 3px;
+      box-shadow: inset  0 0 0 2px  white;
 
     }
     #fill{
       position: absolute;
       width: 100%;
-      height: .5vw; /*should 98.5%*/
+      height: 1%; /*should 98.5%*/
       z-index: -1;
       background-color: #018FFB;
-      bottom: .3%;
-      border-radius:2vw;
+      bottom: 2px;
+      border-radius:3px;
     }
     .level {
      position: absolute;
@@ -280,14 +280,14 @@
     <div class="status_box">
         <div class="topic"><p>Critical Level Alert</p></div>
         <div class="option">  <div class="toggle">
-        <input type="checkbox" id="c_al" onclick="actionClose('c_al')" checked><label for="c_al" ></label></div> 
+        <input type="checkbox" id="c_al" onclick="actionClose('c_al')" ><label for="c_al" ></label></div> 
      </div>
     </div>
 
     <div class="status_box">
         <div class="topic"><p>Warning Level Alert</p></div>
         <div class="option">  <div class="toggle">
-        <input type="checkbox" id="w_al" onclick="actionClose('w_al')" checked><label for="w_al" ></label></div> 
+        <input type="checkbox" id="w_al" onclick="actionClose('w_al')" ><label for="w_al" ></label></div> 
      </div>
     </div>
     <div id="overlay_al"></div>
@@ -301,13 +301,13 @@
                      <div class="status_box">
                         <div class="topic"><p>Critical Level  Action</p></div>
                         <div class="option">  <div class="toggle">
-                        <input type="checkbox" id="c_ac" onclick="actionClose('c_ac')" checked><label for="c_ac" ></label></div> 
+                        <input type="checkbox" id="c_ac" onclick="actionClose('c_ac')" ><label for="c_ac" ></label></div> 
                      </div>
                     </div>
                     <div class="status_box">
                         <div class="topic"><p>Warning Level  Action</p></div>
                         <div class="option">  <div class="toggle">
-                        <input type="checkbox" id="w_ac" onclick="actionClose('w_ac')" checked ><label for="w_ac" ></label></div> 
+                        <input type="checkbox" id="w_ac" onclick="actionClose('w_ac')"  ><label for="w_ac" ></label></div> 
                      </div>
                     </div>
                     <div id="overlay_ac"></div>
@@ -331,8 +331,10 @@ var id1Value,id1,payload,topic,
 companyID="node", deviceType="lls2",deviceID="923714-42180e2de6b4",
 publish_topic=companyID+"/"+deviceType+"/"+"b2n/"+deviceID+"/",// publish topic
 subTopic = companyID+"/"+deviceType+"/"+"n2b/"+deviceID+"/+",// subscribe topic
-levels=document.getElementById('Fill');
+level=document.getElementById('fill'),
+c_al=document.getElementById('c_al');
 
+var d=0;
 
 function connect(){
 try{
@@ -370,6 +372,7 @@ function onMessageArrived(message) {
   payload=message.payloadString;
     console.log("Payload:" + payload);
     console.log("Topic:", topic);
+
    displayFunction(payload);  
   }
   catch(error)
@@ -414,10 +417,22 @@ bar[x].style.backgroundColor = "#ccc";
 }
 
 }
-
+var v3;
 function displayFunction(payload)
 {
   payload = JSON.parse(payload);
+
+ // var v=payload.triggers[1]+payload.triggers[0]
+ // console.log(v);
+
+ v1 = (payload.triggers[0] === 1) ? 8 : (payload.triggers[0] === 0 ? 0 : v);
+ v2 = (payload.triggers[1] === 1) ? 4 : (payload.triggers[1] === 0 ? 0 : v);
+ v3 = (payload.triggers[2] === 1) ? 2 : (payload.triggers[2] === 0 ? 0 : v3);
+ v4 = (payload.triggers[3] === 1) ? 1 : (payload.triggers[3] === 0 ? 0 : v4);
+
+ v3=v1+v2+v3+v4;
+ console.log(v3);
+
       stat=payload['stat'];
 
       switch (stat)
@@ -428,85 +443,156 @@ function displayFunction(payload)
         case "offline":
         offlinestatus(stat);
           break;
-          updateSignalStrength(payload['rssi'],payload['stat']);//rssi
       }
+      updateSignalStrength(payload['rssi'],payload['stat']);//rssi
 
   if(stat == 'online')
   {
+    
     if (payload.levels[0] == '0' &&  payload.levels[1] == '0' ) 
     {
-      levels.style.height="1vw";
+      level.style.height="1%";
       
     }
-    if (payload.levels[0] == '0' &&  payload.levels[1] == '1' ) 
+    if (payload.levels[0] == '0' &&  payload.levels[1] == '1') 
     {
-      levels.style.height="50vw";
+      level.style.height="50%";
       
     }
-    if (payload.levels[0] == '1' &&  payload.levels[1] == '1' ) 
+    if ( payload.levels[0] == '1' &&  payload.levels[1] == '0') 
     {
-      levels.style.height="98vw";
+      level.style.height="99%";
 
     }
+    if ( payload.levels[0] == '1' &&  payload.levels[1] == '1') 
+    {
+      level.style.height="99%";
+
+    }
+
+   if( payload.triggers && payload.triggers.length > 0){
+    switch (payload.triggers[0] )
+   {
+    case 0:
+    w_ac.checked=false;
+ 
+     break;
+    case 1:
+    w_ac.checked=true;
+
+    break;
+
+   }
+   switch (payload.triggers[1] )
+   {
+    case 0:
+    c_ac.checked=false;
+     break;
+    case 1:
+    c_ac.checked=true;
+
+    break;
+
+   }
+
+
+
+
+   switch (payload.triggers[2] )
+   {
+    case 0:
+    w_al.checked=false;
+ 
+     break;
+    case 1:
+    w_al.checked=true;
+
+    break;
+
+   }
+   switch (payload.triggers[3] )
+   {
+    case 0:
+    c_al.checked=false;
+     break;
+    case 1:
+    c_al.checked=true;
+
+    break;
+
+   }
+
   }
+   
 
+  }   
 
-  updateSignalStrength(payload['rssi'],payload['stat']);//rssi
 
 }
 
 
 
 document.getElementById('c_al').addEventListener('change', function(){
-   topic=publish_topic+"alerts";
-      
+   topic=publish_topic+"triggers/set";
+    
       if (this.checked) {
-        payload="-,1";
+        d=1;
       }
       else{
-        payload="-,0";
+        d=-1;
       }
-      sendCommandToDevice(topic,payload);
+    //  sendCommandToDevice(topic, d.toString());
+
+    add(d);
     });
 
-    document.getElementById('w_al').addEventListener('change', function(){
-   topic=publish_topic+"";
-      
+document.getElementById('w_al').addEventListener('change', function(){
+   topic=publish_topic+"triggers/set";
+
       if (this.checked) {
-        payload="-,1";
+        d=2;
       }
       else{
-        payload="-,0";
+        d=-2;
       }
-      sendCommandToDevice(topic,payload);
+
+      add(d);
+  
     });
+
+  
+
+
 
     document.getElementById('c_ac').addEventListener('change', function(){
-   topic=publish_topic+"";
+   topic=publish_topic+"triggers/set";
       
       if (this.checked) {
-        payload="-,1";
+        d=4;
       }
       else{
-        payload="-,0";
+        d=-4;
       }
-      sendCommandToDevice(topic,payload);
+      add(d);
     });
     document.getElementById('w_ac').addEventListener('change', function(){
-   topic=publish_topic+"";
+   topic=publish_topic+"triggers/set";
       
       if (this.checked) {
-        payload="-,1";
+        d=8;
       }
       else{
-        payload="-,0";
+        d=-8;
       }
-      sendCommandToDevice(topic,payload);
+      add(d);
     });
 
 
 
-
+function add(sum){
+       var d2=v3+sum;
+      sendCommandToDevice(topic, d2.toString());
+     }
 
     var bar=  document.getElementsByClassName("bar");  //signal bar.
     function updateSignalStrength(rssi,stat) {
@@ -537,13 +623,6 @@ document.getElementById('c_al').addEventListener('change', function(){
     }
 
 
-
-
-
-
-
-
-
     ///////////////////////////////////////////////////////////////////////////
   function actionClose(id1){
     var checkbox = document.getElementById(id1)
@@ -552,10 +631,10 @@ document.getElementById('c_al').addEventListener('change', function(){
         document.getElementById("overlay").style.display = "block";   
     }
     else{
-      payload="1";
+     // payload="1";
     }
     id1Value=id1;
-    console.log(payload);
+   // console.log(payload);
   }
 document.getElementById('yesButton').addEventListener('click', function() {
  
@@ -563,30 +642,43 @@ document.getElementById('yesButton').addEventListener('click', function() {
     document.getElementById("overlay").style.display = "none";
     if (id1Value) {
         document.getElementById(id1Value).checked = false;
-        payload="0";
+      //  payload="0";
+
     }
-    console.log(payload);
+   
 });
 
 document.getElementById('noButton').addEventListener('click', function() {
-
+    topic=publish_topic+"triggers/set";
     document.getElementById('popup').style.display = 'none';
     document.getElementById("overlay").style.display = "none";
-    if (id1Value) {
+    if (id1Value == 'c_al') {
         document.getElementById(id1Value).checked = true;
-        payload="1";
+        var d2=v3+1;
+      
     }
-    console.log(payload);
+    if (id1Value == 'w_al') {
+        document.getElementById(id1Value).checked = true;
+        var d2=v3+2;
+
+    }
+
+    if (id1Value == 'c_ac') {
+        document.getElementById(id1Value).checked = true;
+        var d2=v3+4;
+      
+    }
+    if (id1Value == 'w_ac') {
+        document.getElementById(id1Value).checked = true;
+        var d2=v3+8;
+
+    }
+    sendCommandToDevice(topic, d2.toString());
+   
 });
 
 
-
-
-
-
-
 connect();
-
 
 setTimeout(function() {
   if(stat !== 'online'){
