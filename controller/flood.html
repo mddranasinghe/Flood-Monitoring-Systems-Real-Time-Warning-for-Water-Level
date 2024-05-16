@@ -19,7 +19,7 @@
     }
     body{  background:white; font-family: 'Avenir';
     font-family: sans-serif;}
-    .gui{width: 92.5%;height: 320px; margin: 0 auto; border:px solid; position: relative;box-shadow: 0.5px 0.5px 3px 0.5px gray; border-radius: 3px;}
+    #gui{width: 92.5%;height: 320px; margin: 0 auto; border:px solid; position: relative;box-shadow: 0.5px 0.5px 3px 0.5px gray; border-radius: 3px;}
     
 
     #container {
@@ -255,7 +255,7 @@
             <div class="bar" id="bar5"style="height:10px;"></div>
         </div></td></tr></table>
   
-      <div class="gui">
+      <div id="gui">
         <div class="gui2">
         <div id="container">
            <div  id="water_level"><div id="fill"></div></div>
@@ -333,6 +333,7 @@ publish_topic=companyID+"/"+deviceType+"/"+"b2n/"+deviceID+"/",// publish topic
 subTopic = companyID+"/"+deviceType+"/"+"n2b/"+deviceID+"/+",// subscribe topic
 level=document.getElementById('fill'),
 c_al=document.getElementById('c_al');
+gui=document.getElementById('gui');
 
 var d=0;
 
@@ -452,21 +453,25 @@ function displayFunction(payload)
     if (payload.levels[0] == '0' &&  payload.levels[1] == '0' ) 
     {
       level.style.height="1%";
-      
+      gui.style.boxShadow = ".5px .5px 4px 2px green";
+
     }
     if (payload.levels[0] == '0' &&  payload.levels[1] == '1') 
     {
       level.style.height="50%";
-      
+      gui.style.boxShadow = ".5px .5px 5px 2px #FF9200";
+
     }
     if ( payload.levels[0] == '1' &&  payload.levels[1] == '0') 
     {
       level.style.height="99%";
+      gui.style.boxShadow = ".5px .5px 5px 2px red";
 
     }
     if ( payload.levels[0] == '1' &&  payload.levels[1] == '1') 
     {
       level.style.height="99%";
+      gui.style.boxShadow = ".5px .5px 5px 2px red";
 
     }
 
