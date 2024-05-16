@@ -585,7 +585,13 @@ document.getElementById('noButton').addEventListener('click', function() {
 
 
 
+connect();
 
+
+setTimeout(function() {
+  if(stat !== 'online'){
+  offlinestatus('none');}
+   }, 3000);
 
 setInterval(connect, 2000);
 
