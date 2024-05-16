@@ -386,10 +386,20 @@ function onConnectionLost(responseObject) {
   
 }
 
+function onlinestatus()
+{
+  document.getElementById("online").style.display="inline";
+  document.getElementById("offline").style.display="none";
+  document.getElementById("overlay_gui").style.display="none";
+  document.getElementById("overlay_ac").style.display="none";
+  document.getElementById("overlay_al").style.display="none";
+
+
+}
 function offlinestatus(stat)
 {
   if(stat === 'offline'){  document.getElementById("offline").style.color="#FF3827";}
-  
+
   document.getElementById("online").style.display="none";
   document.getElementById("offline").style.display="inline";
 
@@ -438,14 +448,7 @@ function displayFunction(payload)
   updateSignalStrength(payload['rssi'],payload['stat']);//rssi
 
 }
-function onlinestatus()
-{
-  document.getElementById("online").style.display="inline";
-  document.getElementById("offline").style.display="none";
-  document.getElementById("overlay").style.display="none";
 
-
-}
 
 
 document.getElementById('c_al').addEventListener('change', function(){
