@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="data:,">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -387,7 +388,8 @@ function onConnectionLost(responseObject) {
 
 function offlinestatus(stat)
 {
-
+  if(stat === 'offline'){  document.getElementById("offline").style.color="#FF3827";}
+  
   document.getElementById("online").style.display="none";
   document.getElementById("offline").style.display="inline";
 
@@ -410,7 +412,7 @@ function displayFunction(payload)
         case "offline":
         offlinestatus(stat);
           break;
-
+          updateSignalStrength(payload['rssi'],payload['stat']);//rssi
       }
 
   if(stat == 'online')
@@ -432,6 +434,9 @@ function displayFunction(payload)
     }
   }
 
+
+  updateSignalStrength(payload['rssi'],payload['stat']);//rssi
+
 }
 function onlinestatus()
 {
@@ -444,7 +449,7 @@ function onlinestatus()
 
 
 document.getElementById('c_al').addEventListener('change', function(){
-   topic=publish_topic+"sw/timer_mode_all";
+   topic=publish_topic+"alerts";
       
       if (this.checked) {
         payload="-,1";
@@ -489,6 +494,40 @@ document.getElementById('c_al').addEventListener('change', function(){
       }
       sendCommandToDevice(topic,payload);
     });
+
+
+
+
+
+    var bar=  document.getElementsByClassName("bar");  //signal bar.
+    function updateSignalStrength(rssi,stat) {
+    if(stat === 'online'){
+      if (rssi >= -50) {
+    bar[0].style.backgroundColor = "#565461";
+    bar[1].style.backgroundColor = "#565461";
+    bar[2].style.backgroundColor = "#565461";
+    bar[3].style.backgroundColor = "#565461";
+    bar[4].style.backgroundColor = "#565461";
+} else if (rssi >= -55) {
+    bar[0].style.backgroundColor = "#565461";
+    bar[1].style.backgroundColor = "#565461";
+    bar[2].style.backgroundColor = "#565461";
+    bar[3].style.backgroundColor = "#565461";
+} else if (rssi >= -65) {
+    bar[0].style.backgroundColor = "#565461";
+    bar[1].style.backgroundColor = "#565461";
+    bar[2].style.backgroundColor = "#565461";
+} else if (rssi >= -80) {
+    bar[0].style.backgroundColor = "#565461";
+    bar[1].style.backgroundColor = "#565461";
+} else if (rssi >= -85) {
+    bar[0].style.backgroundColor = "#565461";
+} else if (rssi >= -100) {
+}
+    }
+    }
+
+
 
 
 
@@ -539,8 +578,7 @@ document.getElementById('noButton').addEventListener('click', function() {
 
 
 
-
-connect();
+setInterval(connect, 2000);
 
     </script>
 </body>
