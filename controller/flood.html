@@ -327,7 +327,7 @@
 
 <script>
 
-var id1Value,id1,payload,topic,
+var id1Value,id1,payload,topic, timer,
 companyID="node", deviceType="lls2",deviceID="923714-42180e2de6b4",
 publish_topic=companyID+"/"+deviceType+"/"+"b2n/"+deviceID+"/",// publish topic
 subTopic = companyID+"/"+deviceType+"/"+"n2b/"+deviceID+"/+",// subscribe topic
@@ -673,31 +673,40 @@ document.getElementById('w_al').addEventListener('change', function(){
 
       if (id1Value == 'c_al') {
         document.getElementById(id1Value).checked = true;
-        var d2=v+1;
+         v=v+1;
       //  sendCommandToDevice(topic, d2.toString());
+      clearTimeout(timer); 
       
     }
     if (id1Value == 'w_al') {
         document.getElementById(id1Value).checked = true;
-       var d2=v+2;
+        v=v+2;
       // sendCommandToDevice(topic, d2.toString());
-
+    clearTimeout(timer); 
+      
     }
 
     if (id1Value == 'c_ac') {
         document.getElementById(id1Value).checked = true;
-        var d2=v+4;
+         v=v+4;
         //sendCommandToDevice(topic, d2.toString());
+        clearTimeout(timer); 
       
     }
     if (id1Value == 'w_ac') {
         document.getElementById(id1Value).checked = true;
-        var d2=v+8;
+         v=v+8;
        // sendCommandToDevice(topic, d2.toString());
+     clearTimeout(timer); 
+      
     }
-
+    console.log("v :"+v);
+     timer=setTimeout(function() {
+             
+             sendCommandToDevice(topic, v.toString());
+                 }, 1000); 
     
-      sendCommandToDevice(topic, d2.toString());
+    // sendCommandToDevice(topic, v.toString());
 
 
     }
@@ -720,21 +729,42 @@ document.getElementById('yesButton').addEventListener('click', function() {
     if (id1Value == 'w_al') {
         document.getElementById(id1Value).checked = false;
         var d2=v-2;
-
+        
     }
 
     if (id1Value == 'c_ac') {
         document.getElementById(id1Value).checked = false;
         var d2=v-4;
+       
       
     }
     if (id1Value == 'w_ac') {
         document.getElementById(id1Value).checked = false;
         var d2=v-8;
-
+       
     }
 
+
+  /*  document.getElementById('set_timer_time').addEventListener('input', function(){
+    clearTimeout(timer); 
+    topic = publish_topic + "sw/on_time_all";
+    payload = this.value.trim(); 
+
+    if (payload !== "") { 
+        timer = setTimeout(function() {
+             payload = payload + ",-";
+            sendCommandToDevice(topic, payload);
+            console.log(payload);
+        }, 1000); 
+    }
+});*/
+
+             
     sendCommandToDevice(topic, d2.toString());
+    
+
+
+   // sendCommandToDevice(topic, d2.toString());
    
 });
 
