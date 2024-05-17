@@ -668,11 +668,8 @@ document.getElementById('w_al').addEventListener('change', function(){
     topic=publish_topic+"triggers/set";
     id1Value=id1;
     var checkbox = document.getElementById(id1)
-    if (!checkbox.checked) {
-        document.getElementById('popup').style.display = 'block';
-        document.getElementById("overlay").style.display = "block";   
-    }
-    else{
+  
+    if (checkbox.checked){
 
       if (id1Value == 'c_al') {
         document.getElementById(id1Value).checked = true;
@@ -700,7 +697,10 @@ document.getElementById('w_al').addEventListener('change', function(){
 
     }
 
-
+    }
+    else if (!checkbox.checked) {
+        document.getElementById('popup').style.display = 'block';
+        document.getElementById("overlay").style.display = "block";   
     }
   
    // console.log(payload);
