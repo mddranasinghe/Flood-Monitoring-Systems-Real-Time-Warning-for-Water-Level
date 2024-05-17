@@ -280,7 +280,7 @@
     <div class="status_box">
         <div class="topic"><p>Critical Level Alert</p></div>
         <div class="option">  <div class="toggle">
-        <input type="checkbox" id="c_al" onclick="actionClose('c_al')" ><label for="c_al" ></label></div> 
+        <input type="checkbox" id="c_al" onclick="actionClose('c_al')"  onclick="actionOn('c_al')"><label for="c_al" ></label></div> 
      </div>
     </div>
 
@@ -537,7 +537,11 @@ function displayFunction(payload)
 
 
 
-document.getElementById('c_al').addEventListener('change', function(){
+
+
+
+
+/*document.getElementById('c_al').addEventListener('change', function(){
    topic=publish_topic+"triggers/set";
     
       if (this.checked) {
@@ -592,12 +596,12 @@ document.getElementById('w_al').addEventListener('change', function(){
       add(d);
     });
 
+*/
 
-
-function add(sum){
+      function add(sum){
        var d2=v+sum;
       sendCommandToDevice(topic, d2.toString());
-     }
+       }
 
     var bar=  document.getElementsByClassName("bar");  //signal bar.
     function updateSignalStrength(rssi,stat) {
@@ -628,43 +632,56 @@ function add(sum){
     }
 
 
+
+
+
+    function actionOn(id_On)
+{
+  topic=publish_topic+"triggers/set";
+  var checkboxChecked1 = document.getElementById(id_On)
+    
+      if (checkboxChecked1 === 'c_al')
+      {
+        if (checkboxChecked1.checked) 
+        {
+          d=1;
+        console.log("ssss");
+
+        }
+        add(d);
+      }
+   
+    
+    else{
+     
+    }
+
+
+}
+
+
+
+
+
     ///////////////////////////////////////////////////////////////////////////
   function actionClose(id1){
+    topic=publish_topic+"triggers/set";
+    id1Value=id1;
     var checkbox = document.getElementById(id1)
     if (!checkbox.checked) {
         document.getElementById('popup').style.display = 'block';
         document.getElementById("overlay").style.display = "block";   
     }
     else{
-     // payload="1";
-    }
-    id1Value=id1;
-   // console.log(payload);
-  }
-document.getElementById('yesButton').addEventListener('click', function() {
- 
-    document.getElementById('popup').style.display = 'none';
-    document.getElementById("overlay").style.display = "none";
-    if (id1Value) {
-        document.getElementById(id1Value).checked = false;
-      //  payload="0";
 
-    }
-   
-});
-
-document.getElementById('noButton').addEventListener('click', function() {
-    topic=publish_topic+"triggers/set";
-    document.getElementById('popup').style.display = 'none';
-    document.getElementById("overlay").style.display = "none";
-    if (id1Value == 'c_al') {
+      if (id1Value == 'c_al') {
         document.getElementById(id1Value).checked = true;
         var d2=v+1;
       
     }
     if (id1Value == 'w_al') {
         document.getElementById(id1Value).checked = true;
-        var d2=v+2;
+       var d2=v+2;
 
     }
 
@@ -678,7 +695,76 @@ document.getElementById('noButton').addEventListener('click', function() {
         var d2=v+8;
 
     }
+ sendCommandToDevice(topic, d2.toString());
+
+    }
+  
+   // console.log(payload);
+  }
+document.getElementById('yesButton').addEventListener('click', function() {
+    topic=publish_topic+"triggers/set";
+    document.getElementById('popup').style.display = 'none';
+    document.getElementById("overlay").style.display = "none";
+    if (id1Value == 'c_al') {
+        document.getElementById(id1Value).checked = false;
+        var d2=v-1;
+      
+    }
+    if (id1Value == 'w_al') {
+        document.getElementById(id1Value).checked = false;
+        var d2=v-2;
+
+    }
+
+    if (id1Value == 'c_ac') {
+        document.getElementById(id1Value).checked = false;
+        var d2=v-4;
+      
+    }
+    if (id1Value == 'w_ac') {
+        document.getElementById(id1Value).checked = false;
+        var d2=v-8;
+
+    }
     sendCommandToDevice(topic, d2.toString());
+   
+});
+
+document.getElementById('noButton').addEventListener('click', function() {
+    topic=publish_topic+"triggers/set";
+    document.getElementById('popup').style.display = 'none';
+    document.getElementById("overlay").style.display = "none";
+    id1Value=document.getElementById(id1Value);
+    if(id1Value)
+    {
+    id1Value.checked = true;
+
+    }
+
+
+
+   /* if (id1Value == 'c_al') {
+        document.getElementById(id1Value).checked = true;
+      //  var d2=v+1;
+      
+    }
+    if (id1Value == 'w_al') {
+        document.getElementById(id1Value).checked = true;
+      //  var d2=v+2;
+
+    }
+
+    if (id1Value == 'c_ac') {
+        document.getElementById(id1Value).checked = true;
+       // var d2=v+4;
+      
+    }
+    if (id1Value == 'w_ac') {
+        document.getElementById(id1Value).checked = true;
+       // var d2=v+8;
+
+    }
+  //  sendCommandToDevice(topic, d2.toString());*/
    
 });
 
