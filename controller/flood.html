@@ -235,16 +235,17 @@
 /* loding css*/
    
 #loding_box{
-background-color:white;
+background-color:gra;
 position: relative;
  width: 50px;
  height: 50px; 
  border:px solid;
-  top:-60%;
+  top:-40%;
   left:45% ;
   z-index: 100;
   border-radius: 8px;
   display: none;
+
 
 }
 
@@ -258,7 +259,7 @@ position: relative;
      left: 0;
      right: 0;
      bottom: 0;
-     background-color: rgba(0,0,0,0.5);
+     background-color: rgba(0, 0, 0, 0.037);
      z-index: 99;
      cursor: pointer;
 }
@@ -288,7 +289,7 @@ display: none;
   margin: 8px;
   border: 3px solid white;
   border-radius: 50%;
-  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  animation: lds-ring 0.9s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   border-color: gray transparent transparent transparent;
 }
 #lds-ring div:nth-child(1) {
@@ -310,6 +311,32 @@ display: none;
 }
 
 
+
+
+#loading-bar-spinner.spinner {
+    left: 50%;
+    margin-left: -20px;
+    top: 70%;
+    margin-top: -20px;
+    position: absolute;
+    z-index: 19 !important;
+    animation: loading-bar-spinner 400ms linear infinite;
+}
+
+#loading-bar-spinner.spinner .spinner-icon {
+    width: 30px;
+    height: 30px;
+    border:  solid 4px transparent;
+    border-top-color: rgba(128, 128, 128, 0.714) !important;
+    border-left-color:  rgba(128, 128, 128, 0.674) !important;
+    border-radius: 50%;
+    z-index: 9998;
+}
+
+@keyframes loading-bar-spinner {
+  0%   { transform: rotate(0deg);   transform: rotate(0deg); }
+  100% { transform: rotate(360deg); transform: rotate(360deg); }
+}
 
     </style>
 
@@ -405,9 +432,10 @@ display: none;
 <div id="overlay"></div>
 <div id="loding_overlay"></div>
 <div id="loding_box" >
-<div id="lds-ring"><div></div><div></div><div></div><div></div></div>
 
+<!--<div id="lds-ring"><div></div><div></div><div></div><div></div></div>-->
 
+<div id="loading-bar-spinner" class="spinner"><div class="spinner-icon"></div></div>
 </div>
 <script>
 
@@ -465,7 +493,8 @@ function onMessageArrived(message) {
    setTimeout(function(){
     document.getElementById("loding_overlay").style.display="none";
       document.getElementById("loding_box").style.display="none";
-      document.getElementById("lds-ring").style.display="none";   },500);
+     // document.getElementById("lds-ring").style.display="none";
+       },300);
    
   }
   catch(error)
@@ -793,9 +822,9 @@ document.getElementById('w_al').addEventListener('change', function(){
      timer=setTimeout(function() {
       document.getElementById("loding_overlay").style.display="block";
       document.getElementById("loding_box").style.display="block";
-      document.getElementById("lds-ring").style.display="block";
+     // document.getElementById("lds-ring").style.display="block";
              sendCommandToDevice(topic, v.toString());
-                 }, 2000); 
+                 }, 800); 
 
     // sendCommandToDevice(topic, v.toString());
 
