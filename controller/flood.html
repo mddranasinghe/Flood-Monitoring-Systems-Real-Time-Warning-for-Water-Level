@@ -674,28 +674,31 @@ document.getElementById('w_al').addEventListener('change', function(){
       if (id1Value == 'c_al') {
         document.getElementById(id1Value).checked = true;
         var d2=v+1;
-        sendCommandToDevice(topic, d2.toString());
+      //  sendCommandToDevice(topic, d2.toString());
       
     }
     if (id1Value == 'w_al') {
         document.getElementById(id1Value).checked = true;
        var d2=v+2;
-       sendCommandToDevice(topic, d2.toString());
+      // sendCommandToDevice(topic, d2.toString());
 
     }
 
     if (id1Value == 'c_ac') {
         document.getElementById(id1Value).checked = true;
         var d2=v+4;
-        sendCommandToDevice(topic, d2.toString());
+        //sendCommandToDevice(topic, d2.toString());
       
     }
     if (id1Value == 'w_ac') {
         document.getElementById(id1Value).checked = true;
         var d2=v+8;
-        sendCommandToDevice(topic, d2.toString());
-
+       // sendCommandToDevice(topic, d2.toString());
     }
+
+    
+      sendCommandToDevice(topic, d2.toString());
+
 
     }
     else if (!checkbox.checked) {
@@ -730,6 +733,7 @@ document.getElementById('yesButton').addEventListener('click', function() {
         var d2=v-8;
 
     }
+
     sendCommandToDevice(topic, d2.toString());
    
 });
