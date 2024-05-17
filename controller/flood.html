@@ -235,7 +235,7 @@
 /* loding css*/
    
 #loding_box{
-background-color:gra;
+
 position: relative;
  width: 50px;
  height: 50px; 
@@ -263,63 +263,16 @@ position: relative;
      z-index: 99;
      cursor: pointer;
 }
-#lds-ring,
-#lds-ring div {
-  box-sizing: border-box;
-  margin: 0 auto;
-
-
-}
-#lds-ring {
-  display: inline-block;
-  position: absolute;
-  z-index: 9998;
-top:15%;
-left:15%;
-display: none;
-
-
-}
-#lds-ring div {
-  box-sizing: border-box;
-  display: block;
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  margin: 8px;
-  border: 3px solid white;
-  border-radius: 50%;
-  animation: lds-ring 0.9s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: gray transparent transparent transparent;
-}
-#lds-ring div:nth-child(1) {
-  animation-delay: -0.45s;
-}
-#lds-ring div:nth-child(2) {
-  animation-delay: -0.3s;
-}
-#lds-ring div:nth-child(3) {
-  animation-delay: -0.15s;
-}
-@keyframes lds-ring {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 
 
 
 #loading-bar-spinner.spinner {
     left: 50%;
     margin-left: -20px;
-    top: 70%;
+    top: 50%;
     margin-top: -20px;
-    position: absolute;
-    z-index: 19 !important;
+    position: fixed;
+    z-index: 190 !important;
     animation: loading-bar-spinner 400ms linear infinite;
 }
 
@@ -330,7 +283,7 @@ display: none;
     border-top-color: rgba(128, 128, 128, 0.714) !important;
     border-left-color:  rgba(128, 128, 128, 0.674) !important;
     border-radius: 50%;
-    z-index: 9998;
+   ;
 }
 
 @keyframes loading-bar-spinner {
