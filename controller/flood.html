@@ -333,6 +333,9 @@ publish_topic=companyID+"/"+deviceType+"/"+"b2n/"+deviceID+"/",// publish topic
 subTopic = companyID+"/"+deviceType+"/"+"n2b/"+deviceID+"/+",// subscribe topic
 level=document.getElementById('fill'),
 c_al=document.getElementById('c_al');
+w_al=document.getElementById('w_al');
+w_ac=document.getElementById('w_ac');
+c_ac=document.getElementById('c_ac');
 gui=document.getElementById('gui');
 
 var d=0;
@@ -426,13 +429,13 @@ function displayFunction(payload)
  // var v=payload.triggers[1]+payload.triggers[0]
  // console.log(v);
 
- v1 = (payload.triggers[0] === 1) ? 8 : (payload.triggers[0] === 0 ? 0 : v);
- v2 = (payload.triggers[1] === 1) ? 4 : (payload.triggers[1] === 0 ? 0 : v);
+ v1 = (payload.triggers[0] === 1) ? 8 : (payload.triggers[0] === 0 ? 0 : v1);
+ v2 = (payload.triggers[1] === 1) ? 4 : (payload.triggers[1] === 0 ? 0 : v2);
  v3 = (payload.triggers[2] === 1) ? 2 : (payload.triggers[2] === 0 ? 0 : v3);
  v4 = (payload.triggers[3] === 1) ? 1 : (payload.triggers[3] === 0 ? 0 : v4);
 
- v3=v1+v2+v3+v4;
- console.log(v3);
+ v=v1+v2+v3+v4;
+ console.log(v);
 
       stat=payload['stat'];
 
@@ -453,25 +456,25 @@ function displayFunction(payload)
     if (payload.levels[0] == '0' &&  payload.levels[1] == '0' ) 
     {
       level.style.height="1%";
-      //gui.style.boxShadow = ".5px .5px 4px 2px green";
+      gui.style.boxShadow = ".5px .5px 4px 2px gray";
 
     }
     if (payload.levels[0] == '0' &&  payload.levels[1] == '1') 
     {
       level.style.height="50%";
-      gui.style.boxShadow = ".5px .5px 5px 2px #FF9200";
+      gui.style.boxShadow = ".5px .5px 4px 2px #FF9200";
 
     }
     if ( payload.levels[0] == '1' &&  payload.levels[1] == '0') 
     {
       level.style.height="99%";
-      gui.style.boxShadow = ".5px .5px 5px 2px red";
+      gui.style.boxShadow = ".5px .5px 4px 2px red";
 
     }
     if ( payload.levels[0] == '1' &&  payload.levels[1] == '1') 
     {
       level.style.height="99%";
-      gui.style.boxShadow = ".5px .5px 5px 2px red";
+      gui.style.boxShadow = ".5px .5px 4px 2px red";
 
     }
 
@@ -499,9 +502,6 @@ function displayFunction(payload)
     break;
 
    }
-
-
-
 
    switch (payload.triggers[2] )
    {
@@ -595,7 +595,7 @@ document.getElementById('w_al').addEventListener('change', function(){
 
 
 function add(sum){
-       var d2=v3+sum;
+       var d2=v+sum;
       sendCommandToDevice(topic, d2.toString());
      }
 
@@ -659,23 +659,23 @@ document.getElementById('noButton').addEventListener('click', function() {
     document.getElementById("overlay").style.display = "none";
     if (id1Value == 'c_al') {
         document.getElementById(id1Value).checked = true;
-        var d2=v3+1;
+        var d2=v+1;
       
     }
     if (id1Value == 'w_al') {
         document.getElementById(id1Value).checked = true;
-        var d2=v3+2;
+        var d2=v+2;
 
     }
 
     if (id1Value == 'c_ac') {
         document.getElementById(id1Value).checked = true;
-        var d2=v3+4;
+        var d2=v+4;
       
     }
     if (id1Value == 'w_ac') {
         document.getElementById(id1Value).checked = true;
-        var d2=v3+8;
+        var d2=v+8;
 
     }
     sendCommandToDevice(topic, d2.toString());
