@@ -429,7 +429,7 @@ TOOLTIP CSS
 /* Tooltip content hidden by default */
 [data-tooltip]::before,
 [data-tooltip]:after {
-  transition: all .5s ease-in-out;
+  transition: all .4s ease-in-out;
   visibility: hidden;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
@@ -454,7 +454,7 @@ TOOLTIP CSS
   color: white;
   content: attr(data-tooltip);
   text-align: center;
-  font-size: 15px;
+  font-size: 10px;
   line-height: 21px;
   border-radius: 3px;
 }
@@ -558,7 +558,7 @@ TOOLTIP CSS
                           
                         <div class="info-block">
                           <p>    
-                            <a data-tooltip="Tooltip text" id="info_box" onclick="infoBox('info_box')"><span>i</span></a>
+                            <a data-tooltip="write the description here....." id="info_box" onclick="infoBox('info_box')"><span>i</span></a>
                           </p>
                         </div>
                         </p>
