@@ -429,7 +429,7 @@ TOOLTIP CSS
 /* Tooltip content hidden by default */
 [data-tooltip]::before,
 [data-tooltip]:after {
-  transition: all 1.3s ease-in-out;
+  transition: all .5s ease-in-out;
   visibility: hidden;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
@@ -973,7 +973,6 @@ function infoBox(id) {
     if (element) {
       element.classList.add('hover-effect');
 
-      // Add a one-time event listener to the document to close the tooltip
       document.addEventListener('click', function handleClickOutside(event) {
         if (!element.contains(event.target)) {
           element.classList.remove('hover-effect');
@@ -981,7 +980,6 @@ function infoBox(id) {
         }
       });
 
-      // Add a one-time event listener for touch events on the document
       document.addEventListener('touchstart', function handleTouchOutside(event) {
         if (!element.contains(event.target)) {
           element.classList.remove('hover-effect');
