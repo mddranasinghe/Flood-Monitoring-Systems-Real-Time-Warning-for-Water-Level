@@ -377,6 +377,114 @@ div.spinner div.bar12 {
 
 
 
+
+
+
+
+.info-block {
+  display: block;
+  position: absolute;
+   top: .5px;
+   left :165px;
+
+
+
+}
+
+.info-block p  {
+  text-align: center;
+}
+
+.info-block a {
+
+  text-decoration: none;
+  border: 1.5px solid #2a2b2c;
+  padding: .2px 6px;
+  border-radius: 100px;
+}
+
+a span {
+  color: #222323;
+  font-size: 16px;
+  font-family: 'Inknut Antiqua', serif;
+  font-weight: bold;
+  line-height: 20px;
+
+
+
+}
+
+
+/*********************
+TOOLTIP CSS
+*********************/
+
+/* Tooltip attribute */
+[data-tooltip] {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+
+/* Tooltip content hidden by default */
+[data-tooltip]:before,
+[data-tooltip]:after {
+  transition: all 1.3s ease-in-out;
+  visibility: hidden;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Tooltip position */
+[data-tooltip]:before {
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  margin-bottom: 5px;
+  margin-left: -80px;
+  padding: 12px;
+  width: 160px;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  background-color: #FFFFFF;
+  background-color: hsl(0,0%,100%, 0.9);
+  color: #005f6b;
+  content: attr(data-tooltip);
+  text-align: center;
+  font-size: 15px;
+  line-height: 21px;
+}
+
+/* Triangle hack for Tooltip bubble */
+[data-tooltip]:after {
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  margin-left: -5px;
+  width: 0;
+  border-top: 5px solid #FFFFFF;
+  border-top: 5px solid hsl(0,0%,100%, 0.9);
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
+}
+
+/* Tooltip visible on hover */
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  transition: all 1.3s ease-in-out;
+  visibility: visible;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+
     </style>
 
 
@@ -444,7 +552,18 @@ div.spinner div.bar12 {
              <div class="Ac">
            
                      <div class="status_box">
-                        <div class="topic"><p>Critical Level  Action</p></div>
+                        <div class="topic"><p>Critical Level  Action
+
+                          
+                        <div class="info-block">
+                          <p>    
+                            <a href="#" data-tooltip="Tooltip text :"><span>i</span></a>
+                          </p>
+                        </div>
+                        </p>
+
+                        
+                        </div>
                         <div class="option">  <div class="toggle">
                         <input type="checkbox" id="c_ac" onclick="actionClose('c_ac')" ><label for="c_ac" ></label></div> 
                      </div>
