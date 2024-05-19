@@ -477,7 +477,7 @@ TOOLTIP CSS
 /* Tooltip visible on hover */
 [data-tooltip]:hover:before,
 [data-tooltip]:hover:after {
-  transition: all 1.3s ease-in-out;
+  transition: all s ease-in-out;
   visibility: visible;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
@@ -557,7 +557,7 @@ TOOLTIP CSS
                           
                         <div class="info-block">
                           <p>    
-                            <a href="#" data-tooltip="Tooltip text :"><span>i</span></a>
+                            <a data-tooltip="Tooltip text :" id="info_box"><span>i</span></a>
                           </p>
                         </div>
                         </p>
