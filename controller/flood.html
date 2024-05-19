@@ -427,7 +427,7 @@ TOOLTIP CSS
 }
 
 /* Tooltip content hidden by default */
-[data-tooltip]:before,
+[data-tooltip]::before,
 [data-tooltip]:after {
   transition: all 1.3s ease-in-out;
   visibility: hidden;
@@ -443,19 +443,20 @@ TOOLTIP CSS
   bottom: 130%;
   left: 50%;
   margin-bottom: 5px;
-  margin-left: -80px;
+  margin-left: -90px;
   padding: 12px;
   width: 160px;
   border-radius: 0;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
-  background-color: #FFFFFF;
-  background-color: hsl(0,0%,100%, 0.9);
-  color: #005f6b;
+  background-color:  rgba(0, 0, 0, .7);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
   content: attr(data-tooltip);
   text-align: center;
   font-size: 15px;
   line-height: 21px;
+  border-radius: 3px;
 }
 
 /* Triangle hack for Tooltip bubble */
@@ -463,10 +464,10 @@ TOOLTIP CSS
   position: absolute;
   bottom: 130%;
   left: 50%;
-  margin-left: -5px;
+  margin-left: -3px;
   width: 0;
-  border-top: 5px solid #FFFFFF;
-  border-top: 5px solid hsl(0,0%,100%, 0.9);
+  border-top: 5px solid  rgba(0, 0, 0, 0.7);
+  border-top: 5px solid  rgba(0, 0, 0, 0.7);
   border-right: 5px solid transparent;
   border-left: 5px solid transparent;
   content: " ";
@@ -477,7 +478,7 @@ TOOLTIP CSS
 /* Tooltip visible on hover */
 [data-tooltip].hover-effect:before,
 [data-tooltip].hover-effect:after {
-  transition: all 1s ease-in-out;
+  transition: all .5s ease-in-out;
   visibility: visible;
   opacity: 1;
 }
