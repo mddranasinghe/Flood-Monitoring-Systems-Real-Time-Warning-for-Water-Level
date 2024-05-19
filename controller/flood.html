@@ -477,7 +477,9 @@ TOOLTIP CSS
 
 /* Tooltip visible on hover */
 [data-tooltip].hover-effect:before,
-[data-tooltip].hover-effect:after {
+[data-tooltip].hover-effect:after,
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
   transition: all .5s ease-in-out;
   visibility: visible;
   opacity: 1;
@@ -966,12 +968,28 @@ document.getElementById('noButton').addEventListener('click', function() {
    
 });
 
+function infoBox(id) {
+    var element = document.getElementById(id);
+    if (element) {
+      element.classList.add('hover-effect');
 
-function infoBox(id)
-{
+      // Add a one-time event listener to the document to close the tooltip
+      document.addEventListener('click', function handleClickOutside(event) {
+        if (!element.contains(event.target)) {
+          element.classList.remove('hover-effect');
+          document.removeEventListener('click', handleClickOutside);
+        }
+      });
 
-  document.getElementById('info_box').classList.add('hover-effect');
-}
+      // Add a one-time event listener for touch events on the document
+      document.addEventListener('touchstart', function handleTouchOutside(event) {
+        if (!element.contains(event.target)) {
+          element.classList.remove('hover-effect');
+          document.removeEventListener('touchstart', handleTouchOutside);
+        }
+      });
+    }
+  }
 
 connect();
 
