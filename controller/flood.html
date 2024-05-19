@@ -475,12 +475,10 @@ TOOLTIP CSS
 }
 
 /* Tooltip visible on hover */
-[data-tooltip]:hover:before,
-[data-tooltip]:hover:after {
-  transition: all s ease-in-out;
+[data-tooltip].hover-effect:before,
+[data-tooltip].hover-effect:after {
+  transition: all 1s ease-in-out;
   visibility: visible;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
 
@@ -557,7 +555,7 @@ TOOLTIP CSS
                           
                         <div class="info-block">
                           <p>    
-                            <a data-tooltip="Tooltip text :" id="info_box"><span>i</span></a>
+                            <a data-tooltip="Tooltip text" id="info_box" onclick="infoBox('info_box')"><span>i</span></a>
                           </p>
                         </div>
                         </p>
@@ -967,6 +965,12 @@ document.getElementById('noButton').addEventListener('click', function() {
    
 });
 
+
+function infoBox(id)
+{
+
+  document.getElementById('info_box').classList.add('hover-effect');
+}
 
 connect();
 
