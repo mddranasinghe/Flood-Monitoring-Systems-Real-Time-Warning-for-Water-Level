@@ -381,63 +381,36 @@ div.spinner div.bar12 {
 
 
 
-.info-block {
-  display: block;
-  position: absolute;
-   top: .5px;
-   left :165px;
-
-
-
+#info_icon
+{
+  padding-left: 5.5px;
+  padding-right: 5.5px;
+  padding-top: .5px;
+  padding-bottom: .5px; 
+  border: 1.5px solid;
+  border-radius:50%; 
+  font-size: 11px;
+  color:gray;
+  font-weight:bold;
+  
 }
 
-.info-block p  {
-  text-align: center;
-}
-
-.info-block a {
-
-  text-decoration: none;
-  border: 1.5px solid #2a2b2c;
-  padding: .2px 6px;
-  border-radius: 100px;
-}
-
-a span {
-  color: #222323;
-  font-size: 16px;
-  font-family: 'Inknut Antiqua', serif;
-  font-weight: bold;
-  line-height: 20px;
-
-
-
-}
-
-
-/*********************
-TOOLTIP CSS
-*********************/
-
-/* Tooltip attribute */
 [data-tooltip] {
   position: relative;
   z-index: 2;
   cursor: pointer;
 }
 
-/* Tooltip content hidden by default */
+
 [data-tooltip]::before,
 [data-tooltip]:after {
   transition: all .4s ease-in-out;
   visibility: hidden;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
   pointer-events: none;
 }
 
-/* Tooltip position */
+
 [data-tooltip]:before {
   position: absolute;
   bottom: 130%;
@@ -459,7 +432,7 @@ TOOLTIP CSS
   border-radius: 3px;
 }
 
-/* Triangle hack for Tooltip bubble */
+
 [data-tooltip]:after {
   position: absolute;
   bottom: 130%;
@@ -532,14 +505,22 @@ TOOLTIP CSS
     
     <div class="Al">
     <div class="status_box">
-        <div class="topic"><p>Critical Level Alert</p></div>
+        <div class="topic"><p>Critical Level Alert
+          <a data-tooltip="write the description here....." id="info_box1" onclick="infoBox('info_box1')"><span id="info_icon">i</span></a>
+
+        </p></div>
         <div class="option">  <div class="toggle">
         <input type="checkbox" id="c_al" onclick="actionClose('c_al')"><label for="c_al" ></label></div> 
      </div>
     </div>
 
     <div class="status_box">
-        <div class="topic"><p>Warning Level Alert</p></div>
+        <div class="topic"><p>Warning Level Alert
+          <a data-tooltip="write the description here....." id="info_box2" onclick="infoBox('info_box2')"><span id="info_icon">i</span></a>
+
+          
+            
+        </p></div>
         <div class="option">  <div class="toggle">
         <input type="checkbox" id="w_al" onclick="actionClose('w_al')" ><label for="w_al" ></label></div> 
      </div>
@@ -554,13 +535,9 @@ TOOLTIP CSS
            
                      <div class="status_box">
                         <div class="topic"><p>Critical Level  Action
-
                           
-                        <div class="info-block">
-                          <p>    
-                            <a data-tooltip="write the description here....." id="info_box" onclick="infoBox('info_box')"><span>i</span></a>
-                          </p>
-                        </div>
+                            <a data-tooltip="write the description here....." id="info_box3" onclick="infoBox('info_box3')"><span id="info_icon">i</span></a>
+                       
                         </p>
 
                         
@@ -570,7 +547,13 @@ TOOLTIP CSS
                      </div>
                     </div>
                     <div class="status_box">
-                        <div class="topic"><p>Warning Level  Action</p></div>
+                        <div class="topic"><p>Warning Level  Action
+
+                              <a data-tooltip="write the description here....." id="info_box4" onclick="infoBox('info_box4')"><span id="info_icon">i</span></a>
+
+
+                        </p>
+                        </div>
                         <div class="option">  <div class="toggle">
                         <input type="checkbox" id="w_ac" onclick="actionClose('w_ac')"  ><label for="w_ac" ></label></div> 
                      </div>
