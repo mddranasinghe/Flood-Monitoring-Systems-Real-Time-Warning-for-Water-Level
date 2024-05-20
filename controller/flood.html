@@ -427,7 +427,7 @@ div.spinner div.bar12 {
   color: white;
   content: attr(data-tooltip);
   text-align: center;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 21px;
   border-radius: 3px;
 }
@@ -595,7 +595,7 @@ div.spinner div.bar12 {
 </div>
 <script>
 
-var id1Value,id1,payload,topic, timer,
+var id1Value,id1,payload,topic, timer,stat,
 companyID="node", deviceType="lls2",deviceID="923714-42180e2de6b4",
 publish_topic=companyID+"/"+deviceType+"/"+"b2n/"+deviceID+"/",// publish topic
 subTopic = companyID+"/"+deviceType+"/"+"n2b/"+deviceID+"/+",// subscribe topic
@@ -695,7 +695,7 @@ bar[x].style.backgroundColor = "#ccc";
 }
 
 }
-var v3;
+
 function displayFunction(payload)
 {
   payload = JSON.parse(payload);
@@ -932,7 +932,7 @@ document.getElementById('yesButton').addEventListener('click', function() {
       document.getElementById("loding_box").style.display="block";
   
              sendCommandToDevice(topic, d2.toString());
-                 }, 00); 
+                 }, ); 
 
     
    
