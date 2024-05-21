@@ -377,7 +377,7 @@ div.spinner div.bar12 {
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 130px;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: #7D63BE;
   color: #fff;
   text-align: center;
   border-radius: 6px;
@@ -399,7 +399,7 @@ padding: 10px;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
+  border-color: #7D63BE transparent transparent transparent;
 }
 .tooltip:hover .tooltiptext,
 .tooltip .tooltiptext.hover-effect {
@@ -957,26 +957,7 @@ function infoBox(id) {
     }
   }
 
-  /*function infoBox(id) {
-    var element = document.getElementById(id);
-    if (element) {
-      element.classList.add('hover-effect');
 
-      document.addEventListener('click', function handleClickOutside(event) {
-        if (!element.contains(event.target)) {
-          element.classList.remove('hover-effect');
-          document.removeEventListener('click', handleClickOutside);
-        }
-      });
-
-      document.addEventListener('touchstart', function handleTouchOutside(event) {
-        if (!element.contains(event.target)) {
-          element.classList.remove('hover-effect');
-          document.removeEventListener('touchstart', handleTouchOutside);
-        }
-      });
-    }
-  }*/
 
 
 connect();
