@@ -264,34 +264,6 @@ position: relative;
      cursor: pointer;
 }
 
-/*
-
-#loading-bar-spinner.spinner {
-    left: 50%;
-    margin-left: -20px;
-    top: 50%;
-    margin-top: -20px;
-    position: absolute;
-    z-index: 190 !important;
-    animation: loading-bar-spinner 400ms linear infinite;
-}
-
-#loading-bar-spinner.spinner .spinner-icon {
-    width: 30px;
-    height: 30px;
-    border:  solid 4px transparent;
-    border-top-color: rgba(128, 128, 128, 0.714) !important;
-    border-left-color:  rgba(128, 128, 128, 0.674) !important;
-    border-radius: 50%;
-   ;
-}
-
-@keyframes loading-bar-spinner {
-  0%   { transform: rotate(0deg);   transform: rotate(0deg); }
-  100% { transform: rotate(360deg); transform: rotate(360deg); }
-}
-*/
-
 
 
 div.spinner {
@@ -381,7 +353,7 @@ div.spinner div.bar12 {
 
 
 
-#info_icon
+.info_icon
 {
   padding-left: 5.5px;
   padding-right: 5.5px;
@@ -395,68 +367,45 @@ div.spinner div.bar12 {
   
 }
 
-[data-tooltip] {
+/*,,,,,,,,,,,,,,,,,,*/
+.tooltip {
   position: relative;
-  z-index: 2;
+  display: inline-block;
   cursor: pointer;
 }
 
-
-[data-tooltip]::before,
-[data-tooltip]:after {
-  transition: all .4s ease-in-out;
+.tooltip .tooltiptext {
   visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-}
-
-
-[data-tooltip]:before {
-  position: absolute;
-  bottom: 130%;
-  left: 50%;
-  margin-bottom: 5px;
-  margin-left: -90px;
-  padding: 12px;
-  width: 160px;
-  border-radius: 0;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  background-color:  rgba(0, 0, 0, .7);
+  width: 130px;
   background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  content: attr(data-tooltip);
+  color: #fff;
   text-align: center;
-  font-size: 12px;
-  line-height: 21px;
-  border-radius: 3px;
-}
-
-
-[data-tooltip]:after {
+  border-radius: 6px;
+  padding: 5px 0;
   position: absolute;
-  bottom: 130%;
+  z-index: 1;
+  bottom: 150%;
   left: 50%;
-  margin-left: -3px;
-  width: 0;
-  border-top: 5px solid  rgba(0, 0, 0, 0.7);
-  border-top: 5px solid  rgba(0, 0, 0, 0.7);
-  border-right: 5px solid transparent;
-  border-left: 5px solid transparent;
-  content: " ";
-  font-size: 0;
-  line-height: 0;
+  margin-left: -75px;
+font-size: 10px;
+padding: 10px;
 }
 
-/* Tooltip visible on hover */
-[data-tooltip].hover-effect:before,
-[data-tooltip].hover-effect:after,
-[data-tooltip]:hover:before,
-[data-tooltip]:hover:after {
-  transition: all .5s ease-in-out;
-  visibility: visible;
-  opacity: 1;
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
 }
+.tooltip:hover .tooltiptext,
+.tooltip .tooltiptext.hover-effect {
+      visibility: visible;
+    }
+	
 
 
     </style>
@@ -505,22 +454,27 @@ div.spinner div.bar12 {
     
     <div class="Al">
     <div class="status_box">
-        <div class="topic"><p>Critical Level Alert
-          <a data-tooltip="write the description here....." id="info_box1" onclick="infoBox('info_box1')"><span id="info_icon">i</span></a>
+        <div class="topic"><p class="tooltip">Critical Level Alert </p>
 
-        </p></div>
+          <div class="tooltip"id="tooltip-element1" onclick="infoBox('tooltip-element1')">  <span class="info_icon">i</span>
+             <span class="tooltiptext"> <img src="../resources\image\msg.png" style="width: 15px; height: 15px;"> "If Critical level alerts have been disable. You will not receive notifications for critical levels." </span>
+  
+          </div>
+        </div>
         <div class="option">  <div class="toggle">
         <input type="checkbox" id="c_al" onclick="actionClose('c_al')"><label for="c_al" ></label></div> 
      </div>
     </div>
 
     <div class="status_box">
-        <div class="topic"><p>Warning Level Alert
-          <a data-tooltip="write the description here....." id="info_box2" onclick="infoBox('info_box2')"><span id="info_icon">i</span></a>
+        <div class="topic"><p class="tooltip">Warning Level Alert </p>
 
-          
+          <div class="tooltip" id="tooltip-element2" onclick="infoBox('tooltip-element2')">  <span class="info_icon" >i</span>
+            <span class="tooltiptext"><img src="../resources\image\msg.png" style="width: 15px; height: 15px;"> "If Warning level alerts have been disable. You will not receive notifications for Warning levels." </span>
+  
+          </div>
             
-        </p></div>
+       </div>
         <div class="option">  <div class="toggle">
         <input type="checkbox" id="w_al" onclick="actionClose('w_al')" ><label for="w_al" ></label></div> 
      </div>
@@ -534,11 +488,13 @@ div.spinner div.bar12 {
              <div class="Ac">
            
                      <div class="status_box">
-                        <div class="topic"><p>Critical Level  Action
+                        <div class="topic"><p class="tooltip">Critical Level  Action</p>
                           
-                            <a data-tooltip="write the description here.....write the description here write the description here" id="info_box3" onclick="infoBox('info_box3')"><span id="info_icon">i</span></a>
-                       
-                        </p>
+                           <div class="tooltip" id="tooltip-element3" onclick="infoBox('tooltip-element3')">  <span class="info_icon">i</span>
+                            <span class="tooltiptext" id="info3" > <img src="../resources\image\e2.png" style="width: 35px; height: 20px;">"If Critical level action have been disable. It will be harm for your Critical level power resources"</span>
+                  
+                    </div>
+                 
 
                         
                         </div>
@@ -547,13 +503,16 @@ div.spinner div.bar12 {
                      </div>
                     </div>
                     <div class="status_box">
-                        <div class="topic"><p>Warning Level  Action
-
-                              <a data-tooltip="write the description here....." id="info_box4" onclick="infoBox('info_box4')"><span id="info_icon">i</span></a>
+                        <div class="topic"><p class="tooltip" >Warning Level Action </p>
 
 
-                        </p>
-                        </div>
+                           <div class="tooltip" id="tooltip-element4" onclick="infoBox('tooltip-element4')"><span class="info_icon">i</span>
+                            <span class="tooltiptext"><img src="../resources\image\e2.png" style="width: 35px; height: 20px;">"If Warning level action have been disable. It will be harm for your Warning level power resources"</span>
+                      
+                          </div>
+                       </div>
+
+
                         <div class="option">  <div class="toggle">
                         <input type="checkbox" id="w_ac" onclick="actionClose('w_ac')"  ><label for="w_ac" ></label></div> 
                      </div>
@@ -730,25 +689,29 @@ function displayFunction(payload)
     if (payload.levels[0] == '0' &&  payload.levels[1] == '0' ) 
     {
       level.style.height="1%";
-      gui.style.boxShadow = "0.5px 0.5px 3px 0.5px gray;";
+      gui.style.boxShadow ="0.5px 0.5px 3px 0.5px gray";
+      console.log('1');
 
     }
     if (payload.levels[0] == '0' &&  payload.levels[1] == '1') 
     {
       level.style.height="50%";
       gui.style.boxShadow = ".5px .5px 4px 2px #FF9200";
+      console.log('50');
 
     }
     if ( payload.levels[0] == '1' &&  payload.levels[1] == '0') 
     {
       level.style.height="99%";
       gui.style.boxShadow = ".5px .5px 4px 2px red";
+           console.log('99');
 
     }
     if ( payload.levels[0] == '1' &&  payload.levels[1] == '1') 
     {
       level.style.height="99%";
       gui.style.boxShadow = ".5px .5px 4px 2px red";
+      console.log('99 2');
 
     }
 
@@ -951,24 +914,32 @@ document.getElementById('noButton').addEventListener('click', function() {
    
 });
 
+
+
 function infoBox(id) {
-    var element = document.getElementById(id);
-    if (element) {
-      element.classList.add('hover-effect');
+  var element=document.getElementById(id);
+    var tooltipText = element.querySelector('.tooltiptext');
+    if (tooltipText) {
+      tooltipText.classList.toggle('hover-effect');
 
-      document.addEventListener('click', function handleClickOutside(event) {
+      function handleClickOutside(event) {
         if (!element.contains(event.target)) {
-          element.classList.remove('hover-effect');
+          tooltipText.classList.remove('hover-effect');
           document.removeEventListener('click', handleClickOutside);
-        }
-      });
-
-      document.addEventListener('touchstart', function handleTouchOutside(event) {
-        if (!element.contains(event.target)) {
-          element.classList.remove('hover-effect');
           document.removeEventListener('touchstart', handleTouchOutside);
         }
-      });
+      }
+
+      function handleTouchOutside(event) {
+        if (!element.contains(event.target)) {
+          tooltipText.classList.remove('hover-effect');
+          document.removeEventListener('click', handleClickOutside);
+          document.removeEventListener('touchstart', handleTouchOutside);
+        }
+      }
+
+      document.addEventListener('click', handleClickOutside);
+      document.addEventListener('touchstart', handleTouchOutside);
     }
   }
 
@@ -977,7 +948,7 @@ connect();
 setTimeout(function() {
   if(stat !== 'online'){
   offlinestatus('none');}
-   }, 3000);
+   }, 1000);
 
 setInterval(connect, 2000);
 
