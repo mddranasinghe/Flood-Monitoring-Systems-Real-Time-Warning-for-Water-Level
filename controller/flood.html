@@ -922,7 +922,7 @@ function infoBox(id) {
     if (tooltipText) {
       tooltipText.classList.toggle('hover-effect');
 
-      function handleClickOutside(event) {
+    /*  function handleClickOutside(event) {
         if (!element.contains(event.target)) {
           tooltipText.classList.remove('hover-effect');
           document.removeEventListener('click', handleClickOutside);
@@ -937,11 +937,47 @@ function infoBox(id) {
           document.removeEventListener('touchstart', handleTouchOutside);
         }
       }
+*/
+      document.addEventListener('click', function handleClickOutside(event) {
+        if (!element.contains(event.target)) {
+          tooltipText.classList.remove('hover-effect');
+          document.removeEventListener('click', handleClickOutside);
+        }
+      });
 
-      document.addEventListener('click', handleClickOutside);
-      document.addEventListener('touchstart', handleTouchOutside);
+      document.addEventListener('touchstart', function handleTouchOutside(event) {
+        if (!element.contains(event.target)) {
+          tooltipText.classList.remove('hover-effect');
+          document.removeEventListener('touchstart', handleTouchOutside);
+        }
+      });
+
+     // document.addEventListener('click', handleClickOutside);
+      //document.addEventListener('touchstart', handleTouchOutside);
     }
   }
+
+  /*function infoBox(id) {
+    var element = document.getElementById(id);
+    if (element) {
+      element.classList.add('hover-effect');
+
+      document.addEventListener('click', function handleClickOutside(event) {
+        if (!element.contains(event.target)) {
+          element.classList.remove('hover-effect');
+          document.removeEventListener('click', handleClickOutside);
+        }
+      });
+
+      document.addEventListener('touchstart', function handleTouchOutside(event) {
+        if (!element.contains(event.target)) {
+          element.classList.remove('hover-effect');
+          document.removeEventListener('touchstart', handleTouchOutside);
+        }
+      });
+    }
+  }*/
+
 
 connect();
 
