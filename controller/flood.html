@@ -357,11 +357,11 @@ div.spinner div.bar12 {
 {
   padding-left: 5.5px;
   padding-right: 5.5px;
-  padding-top: .5px;
+  padding-top: 1.2px;
   padding-bottom: .5px; 
-  border: 1.5px solid;
+  border: 2px solid;
   border-radius:50%; 
-  font-size: 11px;
+  font-size: 11.5px;
   color:gray;
   font-weight:bold;
   
@@ -377,9 +377,9 @@ div.spinner div.bar12 {
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 130px;
-  background-color: #7D63BE;
+  background-color: #7d63be;
   color: #fff;
-  text-align: center;
+  text-align:left;
   border-radius: 6px;
   padding: 5px 0;
   position: absolute;
@@ -406,7 +406,10 @@ padding: 10px;
       visibility: visible;
     }
 	
+.tooltiptext img{
 
+
+}
 
     </style>
 
@@ -457,7 +460,7 @@ padding: 10px;
         <div class="topic"><p class="tooltip">Critical Level Alert </p>
 
           <div class="tooltip"id="tooltip-element1" onclick="infoBox('tooltip-element1')">  <span class="info_icon">i</span>
-             <span class="tooltiptext"> <img src="../resources\image\msg.png" style="width: 15px; height: 15px;"> "If Critical level alerts have been disable. You will not receive notifications for critical levels." </span>
+             <span class="tooltiptext"> "If Critical level alerts have been disable. You will not receive notifications for critical levels." <br><img src="../resources\image\gmil.webp" style="width: 25px; height: 25px; margin-left: 25px;"> &nbsp<img src="../resources\image\sms.webp" style="width: 25px; height: 25px; ">  </span>
   
           </div>
         </div>
@@ -470,7 +473,7 @@ padding: 10px;
         <div class="topic"><p class="tooltip">Warning Level Alert </p>
 
           <div class="tooltip" id="tooltip-element2" onclick="infoBox('tooltip-element2')">  <span class="info_icon" >i</span>
-            <span class="tooltiptext"><img src="../resources\image\msg.png" style="width: 15px; height: 15px;"> "If Warning level alerts have been disable. You will not receive notifications for Warning levels." </span>
+            <span class="tooltiptext">"If Warning level alerts have been disable. You will not receive notifications for Warning levels." <br><img src="../resources\image\gmil.webp" style="width: 25px; height: 25px; margin-left: 35px;"> &nbsp<img src="../resources\image\sms.webp" style="width: 25px; height: 25px; "> </span>
   
           </div>
             
@@ -491,7 +494,7 @@ padding: 10px;
                         <div class="topic"><p class="tooltip">Critical Level  Action</p>
                           
                            <div class="tooltip" id="tooltip-element3" onclick="infoBox('tooltip-element3')">  <span class="info_icon">i</span>
-                            <span class="tooltiptext" id="info3" > <img src="../resources\image\e2.png" style="width: 35px; height: 20px;">"If Critical level action have been disable. It will be harm for your Critical level power resources"</span>
+                            <span class="tooltiptext" id="info3" > "If Critical level action have been disable. It will be harm for your Critical level power resources" <br><img src="../resources\image\plugbase.png" style="width: 25px; height: 25px; margin-left: 35px;"> <img src="../resources\image\electricity.png" style="width: 25px; height: 25px; "></span>
                   
                     </div>
                  
@@ -507,7 +510,7 @@ padding: 10px;
 
 
                            <div class="tooltip" id="tooltip-element4" onclick="infoBox('tooltip-element4')"><span class="info_icon">i</span>
-                            <span class="tooltiptext"><img src="../resources\image\e2.png" style="width: 35px; height: 20px;">"If Warning level action have been disable. It will be harm for your Warning level power resources"</span>
+                            <span class="tooltiptext">If Warning level action have been disable. It will be harm for your Warning level power resources"<br><img src="../resources\image\plugbase.png" style="width: 25px; height: 25px; margin-left: 35px;"> <img src="../resources\image\electricity.png" style="width: 25px; height: 25px; "></span>
                       
                           </div>
                        </div>
